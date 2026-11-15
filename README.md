@@ -1,6 +1,6 @@
-# MG — Creative Developer Portfolio
+# M. CadIIE — Creative Developer Portfolio
 
-A lightweight, English-language personal freelance portfolio focused on Minecraft Fabric gameplay systems, procedural effects and video editing.
+M. CadIIE's lightweight, English-language personal freelance portfolio focused on Minecraft Fabric gameplay systems, procedural effects and video editing.
 
 ## Publish using GitHub Pages
 
