@@ -1108,9 +1108,9 @@
               <li>Tests fonctionnels documentés sur l'environnement convenu</li>
             </ul>
           </div>
-          <button type="button" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="selectOffer('mecanique')">
+          <a href="brief-b01.html" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;">
             DEMANDER UN DEVIS DE MÉCANIQUE
-          </button>
+          </a>
         </div>
       </div>
 
@@ -1148,7 +1148,6 @@
         <label class="brief-field" for="brief-offer">Type de demande
           <select id="brief-offer" name="offre" required>
             <option value="Audit &amp; diagnostic ciblé">Audit &amp; diagnostic ciblé</option>
-            <option value="Mécanique de gameplay Fabric">Mécanique de gameplay Fabric</option>
             <option value="Autre demande (devis personnalisé)">Autre demande (devis personnalisé)</option>
           </select>
         </label>
@@ -1317,6 +1316,7 @@
       document.getElementById('brief-form').hidden = false;
       document.getElementById('brief-help').hidden = false;
       document.getElementById('open-brief').hidden = true;
+      document.getElementById('brief-offer').value = 'Autre demande (devis personnalisé)';
       document.getElementById('brief-offer').focus();
     }
 
@@ -1332,7 +1332,7 @@
     function selectOffer(type) {
       openBrief();
       const offer = document.getElementById('brief-offer');
-      offer.value = type === 'audit' ? 'Audit & diagnostic ciblé' : 'Mécanique de gameplay Fabric';
+      offer.value = type === 'audit' ? 'Audit & diagnostic ciblé' : 'Autre demande (devis personnalisé)';
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
       history.replaceState(null, '', '#contact');
       document.getElementById('brief-goal').focus({ preventScroll: true });

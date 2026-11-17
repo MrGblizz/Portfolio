@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brief B-01 — M. CadIIE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0a09;
+      --panel: #171412;
+      --border: #38302a;
+      --amber: #f59e0b;
+      --orange: #ea580c;
+      --text: #f5f0eb;
+      --muted: #a89f91;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .container { width: min(100% - 32px, 980px); margin: 0 auto; }
+    header { padding: 20px 0; border-bottom: 2px solid var(--border); background: var(--bg); }
+    .brand { color: var(--text); text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
+    .brand-cube {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      background: var(--orange); border: 2px solid var(--amber);
+      color: var(--bg); font: 700 14px 'Silkscreen', monospace;
+      box-shadow: 3px 3px 0 #000;
+    }
+    .brand strong { display: block; font: 700 16px 'Silkscreen', monospace; }
+    .brand small { color: var(--amber); font: 11px 'JetBrains Mono', monospace; }
+    main { padding: 52px 0 72px; }
+    .kicker { color: var(--orange); font: 12px 'Silkscreen', monospace; }
+    h1 { margin: 12px 0 18px; font-size: clamp(24px, 4vw, 38px); line-height: 1.25; }
+    .intro { max-width: 720px; color: var(--muted); }
+    .price { color: var(--amber); font: 700 15px 'Silkscreen', monospace; }
+    .panel {
+      margin: 28px 0; padding: 24px; background: var(--panel);
+      border: 2px solid var(--border); box-shadow: 6px 6px 0 #000;
+    }
+    .panel h2 { margin: 0 0 12px; font: 700 17px 'Silkscreen', monospace; }
+    .panel p { margin: 0 0 14px; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 22px; }
+    .button {
+      display: inline-flex; align-items: center; min-height: 46px; padding: 10px 16px;
+      color: var(--text); background: var(--panel); border: 2px solid var(--border);
+      box-shadow: 5px 5px 0 #000; font: 12px 'Silkscreen', monospace;
+      text-decoration: none;
+    }
+    .button:hover, .button:focus-visible { color: var(--amber); border-color: var(--amber); }
+    .button:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+    iframe { display: block; width: 100%; min-height: 200px; border: 0; }
+    #tally-fallback[hidden], #tally-embed[hidden], #tally-unconfigured[hidden], #tally-error[hidden] { display: none; }
+    footer { padding: 24px 0; color: var(--muted); border-top: 2px solid var(--border); font: 12px 'JetBrains Mono', monospace; }
+    @media (max-width: 600px) {
+      main { padding-top: 32px; }
+      .panel { padding: 16px; }
+      .button { width: 100%; justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Retour au portfolio M. CadIIE">
+        <span class="brand-cube">MC</span>
+        <span><strong>M. CadIIE</strong><small>Fabric / Java Systems</small></span>
+      </a>
+    </div>
+  </header>
+  <main class="container">
+    <span class="kicker">&gt; B-01 // DEMANDE DE DEVIS</span>
+    <h1>Mécanique de gameplay Minecraft Fabric</h1>
+    <p class="price">À PARTIR DE 75 €</p>
+    <p class="intro">Décrivez la mécanique souhaitée pour un mod Fabric autonome. Projets sur Minecraft 1.20.1 ou version ultérieure étudiés au cas par cas ; la version livrée et le périmètre seront définis au devis. Ce questionnaire ne produit pas de devis automatique. Première réponse sous 48 heures, sans promesse de livraison dans ce délai.</p>
+
+    <section class="panel" aria-labelledby="questionnaire-title">
+      <h2 id="questionnaire-title">Questionnaire B-01</h2>
+      <div id="tally-unconfigured">
+        <p>Le questionnaire n'est pas encore configuré. Aucun formulaire n'est disponible ici pour le moment. Pour décrire votre besoin, contactez <strong>mcadiie</strong> sur Discord.</p>
+      </div>
+      <div id="tally-embed" hidden>
+        <iframe id="tally-frame" title="Questionnaire B-01 — mécanique Minecraft Fabric"
+          loading="lazy" width="100%" height="540" frameborder="0" marginheight="0" marginwidth="0"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <p id="tally-error" role="status" hidden>L'intégration ne s'est pas chargée. Utilisez le lien direct ci-dessous.</p>
+      <div class="actions">
+        <a id="tally-fallback" class="button" href="#" target="_blank" rel="noopener noreferrer" hidden>Ouvrir le questionnaire ↗</a>
+        <a class="button" href="index.html#offres">← Retour au portfolio</a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container">© 2026 M. CadIIE · Contact Discord : mcadiie</div></footer>
+  <script>
+    // Renseigner uniquement le vrai lien public publié dans Tally (Share → Copy link).
+    // Aucune requête vers Tally lorsque cette valeur est vide.
+    let TALLY_FORM_URL = '';
+
+    function tallyFormUrl() {
+      if (!TALLY_FORM_URL.trim()) return null;
+      try {
+        const url = new URL(TALLY_FORM_URL.trim());
+        if (url.origin === 'https://tally.so' && !url.username && !url.password
+          && !url.search && !url.hash && /^\/r\/[a-zA-Z0-9_-]+$/.test(url.pathname)) return url;
+      } catch { /* URL incomplète : état non configuré. */ }
+      return null;
+    }
+
+    function setupTally() {
+      const url = tallyFormUrl();
+      if (!url) return;
+
+      document.getElementById('tally-unconfigured').hidden = true;
+      const fallback = document.getElementById('tally-fallback');
+      fallback.href = url.href;
+      fallback.hidden = false;
+
+      // Options de l'embed standard officiel : hauteur dynamique pour éviter un défilement interne.
+      const id = url.pathname.split('/')[2];
+      const embed = new URL('https://tally.so/embed/' + id);
+      embed.search = new URLSearchParams({
+        alignLeft: '1', hideTitle: '1', transparentBackground: '1', dynamicHeight: '1'
+      }).toString();
+      document.getElementById('tally-frame').dataset.tallySrc = embed.href;
+      document.getElementById('tally-embed').hidden = false;
+
+      const script = document.createElement('script');
+      script.src = 'https://tally.so/widgets/embed.js';
+      script.onload = () => {
+        if (window.Tally?.loadEmbeds) window.Tally.loadEmbeds();
+        else document.getElementById('tally-error').hidden = false;
+      };
+      script.onerror = () => { document.getElementById('tally-error').hidden = false; };
+      document.head.appendChild(script);
+    }
+
+    setupTally();
+  </script>
+</body>
+</html>
