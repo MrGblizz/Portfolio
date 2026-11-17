@@ -104,9 +104,8 @@
   </main>
   <footer><div class="container">© 2026 M. CadIIE · Contact Discord : mcadiie</div></footer>
   <script>
-    // Renseigner uniquement le vrai lien public publié dans Tally (Share → Copy link).
-    // Aucune requête vers Tally lorsque cette valeur est vide.
-    let TALLY_FORM_URL = '';
+    // Lien public du formulaire B-01 publié dans Tally (Share → Copy link).
+    let TALLY_FORM_URL = 'https://tally.so/r/2jAxyV';
 
     function tallyFormUrl() {
       if (!TALLY_FORM_URL.trim()) return null;
@@ -131,7 +130,7 @@
       const id = url.pathname.split('/')[2];
       const embed = new URL('https://tally.so/embed/' + id);
       embed.search = new URLSearchParams({
-        alignLeft: '1', hideTitle: '1', transparentBackground: '1', dynamicHeight: '1'
+        alignLeft: '1', hideTitle: '1', dynamicHeight: '1'
       }).toString();
       document.getElementById('tally-frame').dataset.tallySrc = embed.href;
       document.getElementById('tally-embed').hidden = false;
