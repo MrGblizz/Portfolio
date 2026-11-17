@@ -342,7 +342,7 @@
     @media (min-width: 860px) {
       .video-showcase {
         grid-template-columns: 1.2fr 1fr;
-        align-items: start;
+        align-items: stretch;
       }
     }
 
@@ -527,6 +527,8 @@
       border: 2px solid var(--border);
       box-shadow: 6px 6px 0px #000;
       padding: 24px;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-tags {
@@ -1034,7 +1036,7 @@
             <li><span>[+]</span> <strong>Livrable :</strong> Modalités adaptées au projet et définies au devis.</li>
           </ul>
 
-          <a href="#contact" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center; margin-top: 8px;">
+          <a href="#contact" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center; margin-top: auto;">
             DISCUTER D'UN BESOIN SIMILAIRE ↗
           </a>
         </div>
