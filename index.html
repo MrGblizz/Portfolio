@@ -302,6 +302,11 @@
       box-shadow: 0px 0px 0px #000;
     }
 
+    .btn-voxel-services {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
     /* Section Vitrine Démo Vidéo */
     .section {
       padding: 48px 0;
@@ -331,13 +336,13 @@
     .video-showcase {
       display: grid;
       gap: 28px;
-      align-items: center;
+      align-items: start;
     }
 
     @media (min-width: 860px) {
       .video-showcase {
         grid-template-columns: 1.2fr 1fr;
-        align-items: center;
+        align-items: start;
       }
     }
 
@@ -345,7 +350,75 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      justify-content: center;
+      min-width: 0;
+    }
+
+    .specialties-panel {
+      background: var(--panel);
+      border: 2px solid var(--border);
+      box-shadow: 6px 6px 0px #000;
+      padding: 16px;
+    }
+
+    .specialties-title {
+      font-family: var(--font-pixel);
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .specialties-intro {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .specialties-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .specialty-button {
+      min-width: 0;
+      min-height: 46px;
+      padding: 7px 4px;
+      background: var(--bg);
+      border: 2px solid var(--specialty);
+      color: var(--text);
+      font: 10px var(--font-pixel);
+      cursor: pointer;
+      overflow-wrap: anywhere;
+    }
+
+    .specialty-button:hover,
+    .specialty-button:focus-visible,
+    .specialty-button[aria-expanded="true"] {
+      background: var(--panel-hover);
+      box-shadow: inset 0 -3px 0 var(--specialty);
+    }
+
+    .specialty-button:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+    }
+
+    .specialty-detail {
+      margin-top: 14px;
+      border-left: 3px solid var(--specialty);
+      padding: 6px 0 6px 12px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .specialty-detail[hidden] {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .specialties-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .video-block {
@@ -635,7 +708,9 @@
       margin-bottom: 24px;
     }
 
-    #contact {
+    #contact,
+    #demo,
+    #offres {
       scroll-margin-top: 90px;
     }
 
@@ -712,6 +787,19 @@
       background: var(--bg);
       border: 2px solid var(--amber);
       font: 12px var(--font-mono);
+    }
+
+    .honeypot {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    #brief-submit:disabled {
+      opacity: 0.6;
+      cursor: wait;
     }
 
     @media (max-width: 600px) {
@@ -812,6 +900,9 @@
             <a href="#demo" class="btn-voxel btn-voxel-primary">
               VOIR LA DÉMO VIDÉO ↓
             </a>
+            <a href="#offres" class="btn-voxel btn-voxel-ghost btn-voxel-services">
+              VOIR LES PRESTATIONS ↓
+            </a>
             <button class="btn-voxel btn-voxel-ghost" onclick="copyDiscord()">
               DISCORD : mcadiie
             </button>
@@ -854,6 +945,27 @@
                  <p>Fichier chargé : <code>demo-categorie-corps.mp4</code></p>
               </div>
             </div>
+          </div>
+
+          <!-- Spécialités d'aura : une description ouverte à la fois -->
+          <div class="specialties-panel">
+            <span class="section-kicker">&gt; ARCHITECTURE DU SYSTÈME</span>
+            <h3 class="specialties-title">LES 6 SPÉCIALITÉS D'AURA &amp; MÉLANGES</h3>
+            <p class="specialties-intro">Chaque spécialité possède sa dynamique de particules, ses affinités et ses interactions combinables.</p>
+            <div class="specialties-grid">
+              <button type="button" class="specialty-button" style="--specialty: #ea580c;" aria-expanded="false" aria-controls="specialty-corps" onclick="toggleSpecialty('corps')">Corps (actif en démo)</button>
+              <button type="button" class="specialty-button" style="--specialty: #84cc16;" aria-expanded="false" aria-controls="specialty-alteration" onclick="toggleSpecialty('alteration')">Altération</button>
+              <button type="button" class="specialty-button" style="--specialty: #ec4899;" aria-expanded="false" aria-controls="specialty-faconnage" onclick="toggleSpecialty('faconnage')">Façonnage</button>
+              <button type="button" class="specialty-button" style="--specialty: #60a5fa;" aria-expanded="false" aria-controls="specialty-perception" onclick="toggleSpecialty('perception')">Perception</button>
+              <button type="button" class="specialty-button" style="--specialty: #c084fc;" aria-expanded="false" aria-controls="specialty-emprise" onclick="toggleSpecialty('emprise')">Emprise</button>
+              <button type="button" class="specialty-button" style="--specialty: #2dd4bf;" aria-expanded="false" aria-controls="specialty-projection" onclick="toggleSpecialty('projection')">Projection</button>
+            </div>
+            <p id="specialty-corps" class="specialty-detail" style="--specialty: #ea580c;" hidden>Renforcer son corps, ses objets et des blocs. Frapper plus fort, encaisser, accélérer son temps.</p>
+            <p id="specialty-alteration" class="specialty-detail" style="--specialty: #84cc16;" hidden>Donner une nature à son aura : feu, poison, glace, électrique, élastique, explosive... et des zones.</p>
+            <p id="specialty-faconnage" class="specialty-detail" style="--specialty: #ec4899;" hidden>Faire naître des choses : créations programmées, objets, clones, sbires et espace de poche.</p>
+            <p id="specialty-perception" class="specialty-detail" style="--specialty: #60a5fa;" hidden>L'information comme arme : sens aiguisés, lire l'aura, voir à distance, balises et révélation.</p>
+            <p id="specialty-emprise" class="specialty-detail" style="--specialty: #c084fc;" hidden>Contrôler les êtres : aveugler, étourdir, lier, télékinésie, voler ou sceller l'aura adverse.</p>
+            <p id="specialty-projection" class="specialty-detail" style="--specialty: #2dd4bf;" hidden>Lancer son aura : projectiles programmés, propulsion, téléportation et portails à distance.</p>
           </div>
 
           <!-- Carrousel de captures d'interface & dioramas 3D -->
@@ -919,78 +1031,12 @@
 
           <ul class="project-specs">
             <li><span>[+]</span> <strong>Isolation :</strong> Code modulaire évitant les conflits d'injection Mixin.</li>
-            <li><span>[+]</span> <strong>Stabilité :</strong> Validation rigoureuse du tick rate et du garbage collector.</li>
             <li><span>[+]</span> <strong>Livrable :</strong> Modalités adaptées au projet et définies au devis.</li>
           </ul>
 
           <a href="#contact" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center; margin-top: 8px;">
             DISCUTER D'UN BESOIN SIMILAIRE ↗
           </a>
-        </div>
-      </div>
-
-      <!-- ARBRE DES 6 SPÉCIALITÉS D'AURA -->
-      <div style="margin-top: 48px;">
-        <div style="margin-bottom: 20px;">
-          <span class="section-kicker">&gt; ARCHITECTURE DU SYSTÈME</span>
-          <h3 style="font-family: var(--font-pixel); font-size: 18px; color: #fff;">LES 6 SPÉCIALITÉS D'AURA &amp; MÉLANGES</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">Chaque spécialité possède sa dynamique de particules, ses affinités et ses interactions combinables.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
-          <!-- 01 Corps -->
-          <div style="background: var(--panel); border: 2px solid #ea580c; box-shadow: 4px 4px 0px #000; padding: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="width: 10px; height: 10px; background: #ea580c; display: inline-block;"></span>
-              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #ea580c;">Corps (Actif en démo)</strong>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Renforcer son corps, ses objets et des blocs. Frapper plus fort, encaisser, accélérer son temps.</p>
-          </div>
-
-          <!-- 02 Altération -->
-          <div style="background: var(--panel); border: 2px solid #84cc16; box-shadow: 4px 4px 0px #000; padding: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="width: 10px; height: 10px; background: #84cc16; display: inline-block;"></span>
-              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #84cc16;">Altération</strong>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Donner une nature à son aura : feu, poison, glace, électrique, élastique, explosive... et des zones.</p>
-          </div>
-
-          <!-- 03 Façonnage -->
-          <div style="background: var(--panel); border: 2px solid #ec4899; box-shadow: 4px 4px 0px #000; padding: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="width: 10px; height: 10px; background: #ec4899; display: inline-block;"></span>
-              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #ec4899;">Façonnage</strong>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Faire naître des choses : créations programmées, objets, clones, sbires et espace de poche.</p>
-          </div>
-
-          <!-- 04 Perception -->
-          <div style="background: var(--panel); border: 2px solid #60a5fa; box-shadow: 4px 4px 0px #000; padding: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="width: 10px; height: 10px; background: #60a5fa; display: inline-block;"></span>
-              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #60a5fa;">Perception</strong>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">L'information comme arme : sens aiguisés, lire l'aura, voir à distance, balises et révélation.</p>
-          </div>
-
-          <!-- 05 Emprise -->
-          <div style="background: var(--panel); border: 2px solid #c084fc; box-shadow: 4px 4px 0px #000; padding: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="width: 10px; height: 10px; background: #c084fc; display: inline-block;"></span>
-              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #c084fc;">Emprise</strong>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Contrôler les êtres : aveugler, étourdir, lier, télékinésie, voler ou sceller l'aura adverse.</p>
-          </div>
-
-          <!-- 06 Projection -->
-          <div style="background: var(--panel); border: 2px solid #2dd4bf; box-shadow: 4px 4px 0px #000; padding: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span style="width: 10px; height: 10px; background: #2dd4bf; display: inline-block;"></span>
-              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #2dd4bf;">Projection</strong>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Lancer son aura : projectiles programmés, propulsion, téléportation et portails à distance.</p>
-          </div>
         </div>
       </div>
 
@@ -1078,41 +1124,50 @@
       <p class="contact-subtitle">Décrivez un problème ou une fonctionnalité pour demander un devis. Une première réponse arrive sous 48 heures ; le devis et le délai de réalisation sont fixés après examen.</p>
       <button id="open-brief" type="button" class="btn-voxel btn-voxel-primary" onclick="openBrief()">DÉCRIRE MON BESOIN</button>
 
-      <form id="brief-form" class="brief-form" onsubmit="copyBrief(event)" hidden>
+      <form id="brief-form" class="brief-form" onsubmit="submitBrief(event)" hidden>
         <button type="button" class="btn-voxel btn-voxel-ghost brief-field-wide" style="justify-content: center;" onclick="closeBrief()">FERMER LE BRIEF</button>
         <label class="brief-field" for="brief-offer">Type de demande
-          <select id="brief-offer" required>
+          <select id="brief-offer" name="offre" required>
             <option value="Audit &amp; diagnostic ciblé">Audit &amp; diagnostic ciblé</option>
             <option value="Mécanique de gameplay Fabric">Mécanique de gameplay Fabric</option>
             <option value="Autre demande (devis personnalisé)">Autre demande (devis personnalisé)</option>
           </select>
         </label>
         <label class="brief-field" for="brief-version">Version Minecraft/Fabric
-          <input id="brief-version" type="text" placeholder="Ex. 1.21.1 ou Je ne sais pas" required>
+          <input id="brief-version" name="version" type="text" placeholder="Ex. 1.21.1 ou Je ne sais pas" required>
         </label>
         <label class="brief-field brief-field-wide" for="brief-goal">Que voulez-vous obtenir ou résoudre ?
-          <textarea id="brief-goal" placeholder="Quand je fais X, il se passe Y…" required></textarea>
+          <textarea id="brief-goal" name="objectif" placeholder="Quand je fais X, il se passe Y…" required></textarea>
         </label>
         <label class="brief-field" for="brief-context">Contexte du projet
-          <select id="brief-context" required>
+          <select id="brief-context" name="contexte" required>
             <option value="Je ne sais pas">Je ne sais pas</option>
             <option value="Solo">Solo</option>
             <option value="Serveur">Serveur</option>
             <option value="Solo et serveur">Solo et serveur</option>
           </select>
         </label>
-        <label class="brief-field" for="brief-discord">Votre pseudo Discord
-          <input id="brief-discord" type="text" autocomplete="off" placeholder="Votre pseudo (pas votre mot de passe)" required>
+        <label class="brief-field" for="brief-discord">Votre pseudo Discord (ou email si l'envoi est activé)
+          <input id="brief-discord" name="discord" type="text" autocomplete="off" placeholder="Votre pseudo (pas votre mot de passe)" required>
+        </label>
+        <label id="brief-email-field" class="brief-field brief-field-wide" for="brief-email" hidden>Email de réponse (facultatif si pseudo Discord)
+          <input id="brief-email" name="email" type="email" autocomplete="email" placeholder="Pour recevoir une réponse par email">
         </label>
         <label class="brief-field brief-field-wide" for="brief-result">Comment saurez-vous que le travail est réussi ?
-          <textarea id="brief-result" placeholder="Une phrase suffit." required></textarea>
+          <textarea id="brief-result" name="resultat" placeholder="Une phrase suffit." required></textarea>
         </label>
         <label class="brief-field brief-field-wide" for="brief-links">Liens et informations utiles (facultatif)
-          <textarea id="brief-links" placeholder="Dépôt autorisé, logs d'audit via un lien, captures… Aucun mot de passe ni jeton."></textarea>
+          <textarea id="brief-links" name="liens" placeholder="Dépôt autorisé, logs d'audit via un lien, captures… Aucun mot de passe ni jeton."></textarea>
         </label>
-        <button type="submit" class="btn-voxel btn-voxel-primary brief-field-wide" style="justify-content: center;">COPIER LE BRIEF POUR DISCORD</button>
+        <label class="honeypot" aria-hidden="true">Laissez ce champ vide
+          <input name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </label>
+        <button id="brief-submit" type="submit" class="btn-voxel btn-voxel-primary brief-field-wide" style="justify-content: center;">COPIER LE BRIEF POUR DISCORD</button>
+        <button id="brief-copy" type="button" class="btn-voxel btn-voxel-ghost brief-field-wide" style="justify-content: center;" onclick="copyBriefForDiscord()" hidden>COPIER POUR DISCORD</button>
       </form>
       <p id="brief-help" class="brief-help" hidden>Copiez ce brief et envoyez-le à <strong>mcadiie</strong> sur Discord. Copier le texte ne l'envoie pas automatiquement. Ne partagez aucun secret.</p>
+      <p id="email-privacy" class="brief-help" hidden>Les informations soumises servent à répondre à votre demande de devis et transitent par Formspree. Mentions de confidentialité à vérifier avant activation publique.</p>
+      <p id="brief-status" class="brief-help" role="status" aria-live="polite" hidden></p>
       <div id="brief-fallback" class="brief-fallback" hidden>
         <label for="brief-message">Copie automatique indisponible : sélectionnez et copiez ce message manuellement.</label>
         <textarea id="brief-message" readonly></textarea>
@@ -1139,8 +1194,22 @@
   <div id="toast" class="toast" role="status" aria-live="polite">DISCORD COPIÉ : mcadiie</div>
 
   <script>
+    // Endpoint PUBLIC Formspree : laisser vide tant que la réception n'a pas été testée.
+    let FORM_ENDPOINT = '';
+
+    function toggleSpecialty(id) {
+      const panel = document.getElementById('specialty-' + id);
+      const button = document.querySelector('.specialty-button[aria-controls="specialty-' + id + '"]');
+      const opening = panel.hidden;
+      document.querySelectorAll('.specialty-detail').forEach(detail => { detail.hidden = true; });
+      document.querySelectorAll('.specialty-button').forEach(tab => tab.setAttribute('aria-expanded', 'false'));
+      panel.hidden = !opening;
+      button.setAttribute('aria-expanded', String(opening));
+    }
+
     // Détection de la présence de la vidéo
     document.addEventListener('DOMContentLoaded', () => {
+      setupContactForm();
       const video = document.getElementById('main-video');
       const placeholder = document.getElementById('video-placeholder');
 
@@ -1257,10 +1326,55 @@
       setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    async function copyBrief(event) {
-      event.preventDefault();
+    function formEndpoint() {
+      if (!FORM_ENDPOINT.trim()) return null;
+      try {
+        const url = new URL(FORM_ENDPOINT);
+        if (url.origin === 'https://formspree.io' && !url.username && !url.password && !url.search && !url.hash
+          && /^\/f\/[a-zA-Z0-9_-]+$/.test(url.pathname)) {
+          return url.href;
+        }
+      } catch { /* Une configuration incorrecte reste en mode copie Discord. */ }
+      return null;
+    }
+
+    function setBriefStatus(text) {
+      const status = document.getElementById('brief-status');
+      status.textContent = text;
+      status.hidden = !text;
+    }
+
+    function setupContactForm() {
+      const emailEnabled = Boolean(formEndpoint());
+      const discord = document.getElementById('brief-discord');
+      discord.required = !emailEnabled;
+      discord.setCustomValidity('');
+      document.getElementById('brief-email-field').hidden = !emailEnabled;
+      document.getElementById('brief-email').disabled = !emailEnabled;
+      document.getElementById('brief-copy').hidden = !emailEnabled;
+      document.getElementById('email-privacy').hidden = !emailEnabled;
+      document.getElementById('brief-submit').textContent = emailEnabled ? 'ENVOYER LA DEMANDE' : 'COPIER LE BRIEF POUR DISCORD';
+      document.getElementById('brief-help').innerHTML = emailEnabled
+        ? 'Seul le bouton « Envoyer la demande » transmet vos informations à Formspree. Vous pouvez aussi copier le brief pour Discord <strong>mcadiie</strong>. Ne partagez aucun secret.'
+        : 'Copiez ce brief et envoyez-le à <strong>mcadiie</strong> sur Discord. Copier le texte ne l’envoie pas automatiquement. Ne partagez aucun secret.';
+      if (FORM_ENDPOINT.trim() && !emailEnabled) setBriefStatus('Endpoint Formspree invalide : seul le mode copie Discord est disponible.');
+      document.getElementById('brief-form').addEventListener('input', () => {
+        discord.setCustomValidity('');
+        setBriefStatus('');
+      });
+    }
+
+    function validateBrief() {
       const form = document.getElementById('brief-form');
-      if (!form.reportValidity()) return;
+      const discord = document.getElementById('brief-discord');
+      discord.setCustomValidity('');
+      if (formEndpoint() && !discord.value.trim() && !document.getElementById('brief-email').value.trim()) {
+        discord.setCustomValidity('Indiquez un pseudo Discord ou un email de réponse.');
+      }
+      return form.reportValidity();
+    }
+
+    function briefMessage() {
       const field = id => document.getElementById(id).value.trim();
       const message = [
         'Bonjour, je souhaite demander un devis.',
@@ -1270,8 +1384,15 @@
         'Contexte (solo / serveur / inconnu) : ' + field('brief-context'),
         'Résultat attendu : ' + field('brief-result'),
         'Liens et informations utiles : ' + (field('brief-links') || 'Non précisés'),
-        'Mon pseudo Discord : ' + field('brief-discord')
-      ].join('\n');
+        'Mon pseudo Discord : ' + (field('brief-discord') || 'Non précisé')
+      ];
+      if (formEndpoint()) message.push('Email de réponse : ' + (field('brief-email') || 'Non précisé'));
+      return message.join('\n');
+    }
+
+    async function copyBriefForDiscord() {
+      if (!validateBrief()) return;
+      const message = briefMessage();
       try {
         await navigator.clipboard.writeText(message);
         document.getElementById('brief-fallback').hidden = true;
@@ -1283,6 +1404,45 @@
         fallback.hidden = false;
         output.focus();
         output.select();
+      }
+    }
+
+    let sendingBrief = false;
+
+    async function submitBrief(event) {
+      event.preventDefault();
+      const endpoint = formEndpoint();
+      if (!endpoint) {
+        await copyBriefForDiscord();
+        return;
+      }
+      if (sendingBrief || !validateBrief()) return;
+      const form = document.getElementById('brief-form');
+      if (form.elements['_gotcha'].value) {
+        setBriefStatus('La demande n’a pas été transmise. Utilisez la copie pour Discord si nécessaire.');
+        return;
+      }
+      const button = document.getElementById('brief-submit');
+      sendingBrief = true;
+      button.disabled = true;
+      setBriefStatus('Envoi en cours…');
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || result?.ok !== true) {
+          setBriefStatus('Demande non transmise : vérifiez les champs et réessayez, ou copiez le brief pour Discord.');
+          return;
+        }
+        setBriefStatus('Votre demande a été transmise.');
+      } catch {
+        setBriefStatus('Connexion indisponible : votre demande n’a pas été transmise. Utilisez la copie pour Discord.');
+      } finally {
+        button.disabled = false;
+        sendingBrief = false;
       }
     }
 
