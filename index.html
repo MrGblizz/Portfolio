@@ -526,6 +526,8 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 16px;
       border-bottom: 2px solid var(--border);
       padding-bottom: 12px;
@@ -627,6 +629,95 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 16px;
+    }
+
+    #open-brief {
+      margin-bottom: 24px;
+    }
+
+    #contact {
+      scroll-margin-top: 90px;
+    }
+
+    .brief-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px auto;
+      max-width: 680px;
+      text-align: left;
+    }
+
+    .contact-panel [hidden] {
+      display: none;
+    }
+
+    .brief-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+      min-width: 0;
+    }
+
+    .brief-field-wide {
+      grid-column: 1 / -1;
+    }
+
+    .brief-field input,
+    .brief-field select,
+    .brief-field textarea {
+      width: 100%;
+      min-width: 0;
+      padding: 10px 12px;
+      background: var(--bg);
+      color: var(--text);
+      border: 2px solid var(--border);
+      border-radius: 0;
+      font: 13px var(--font-mono);
+    }
+
+    .brief-field textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    .brief-field input:focus,
+    .brief-field select:focus,
+    .brief-field textarea:focus {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px;
+    }
+
+    .brief-help {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0 auto 16px;
+      max-width: 680px;
+    }
+
+    .brief-fallback {
+      max-width: 680px;
+      margin: 0 auto 18px;
+      text-align: left;
+    }
+
+    .brief-fallback textarea {
+      width: 100%;
+      min-height: 190px;
+      padding: 10px 12px;
+      color: var(--text);
+      background: var(--bg);
+      border: 2px solid var(--amber);
+      font: 12px var(--font-mono);
+    }
+
+    @media (max-width: 600px) {
+      .brief-form {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Toast de copie */
@@ -829,7 +920,7 @@
           <ul class="project-specs">
             <li><span>[+]</span> <strong>Isolation :</strong> Code modulaire évitant les conflits d'injection Mixin.</li>
             <li><span>[+]</span> <strong>Stabilité :</strong> Validation rigoureuse du tick rate et du garbage collector.</li>
-            <li><span>[+]</span> <strong>Livrable :</strong> Pull Request Git commentée ou archive .jar prête à tester.</li>
+            <li><span>[+]</span> <strong>Livrable :</strong> Modalités adaptées au projet et définies au devis.</li>
           </ul>
 
           <a href="#contact" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center; margin-top: 8px;">
@@ -913,53 +1004,47 @@
       </div>
 
       <div class="offers-grid">
-        <!-- Offre 1 : Bugfix & Conflit -->
+        <!-- Offre 1 : audit ciblé -->
         <div class="offer-box">
           <div>
             <div class="offer-header">
-              <span class="offer-badge">CORRECTION / COMPATIBILITÉ</span>
-              <span class="offer-price">35 € – 50 €</span>
+              <span class="offer-badge">AUDIT &amp; DIAGNOSTIC CIBLÉ</span>
+              <span class="offer-price">À PARTIR DE 35 €</span>
             </div>
-            <h3 class="offer-title">Bugfix &amp; Diagnostic de Crash</h3>
-            <div class="placeholder-box" style="margin-bottom: 16px;">
-              <span class="placeholder-tag">[TEXTE À ÉCRIRE - OFFRE 1]</span>
-              <p class="offer-desc">
-                <em>(Placeholder)</em> : Décris ici ce que tu proposes pour un créateur de mod ou de modpack bloqué par un bug précis, une incompatibilité entre deux mods ou une exception récurrente dans les logs.
-              </p>
-            </div>
+            <h3 class="offer-title">Audit &amp; diagnostic ciblé</h3>
+            <p class="offer-desc">
+              Pour un problème Fabric précis : examen des logs et des éléments utiles, tentative de reproduction si possible, analyse de la cause probable et pistes de correction. Le diagnostic peut rester non concluant ; la correction du bug n'est pas garantie.
+            </p>
             <ul class="offer-list">
-              <li>Reproduction isolée du problème</li>
-              <li>Patch .diff ou Pull Request Git explicative</li>
-              <li>Preuve de bon fonctionnement en jeu</li>
+              <li>Compte rendu court : démarche, observations et conclusion</li>
+              <li>Tests réalisés et limites documentés</li>
+              <li>Recommandations ; patch éventuel uniquement si prévu au devis</li>
             </ul>
           </div>
-          <button class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="copyDiscord()">
-            DEMANDER UN CORRECTIF
+          <button type="button" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="selectOffer('audit')">
+            DEMANDER UN DEVIS D'AUDIT
           </button>
         </div>
 
-        <!-- Offre 2 : Micro-mécanique -->
+        <!-- Offre 2 : mécanique ciblée -->
         <div class="offer-box">
           <div>
             <div class="offer-header">
-              <span class="offer-badge">DÉVELOPPEMENT CIBLÉ</span>
-              <span class="offer-price">50 € – 75 €</span>
+              <span class="offer-badge">MÉCANIQUE DE GAMEPLAY FABRIC</span>
+              <span class="offer-price">À PARTIR DE 75 €</span>
             </div>
-            <h3 class="offer-title">Micro-Mécanique &amp; Entités</h3>
-            <div class="placeholder-box" style="margin-bottom: 16px;">
-              <span class="placeholder-tag">[TEXTE À ÉCRIRE - OFFRE 2]</span>
-              <p class="offer-desc">
-                <em>(Placeholder)</em> : Décris ici l'ajout d'une mécanique de gameplay délimitée (2 à 4h de travail) : interaction spécifique avec un item, effet de particule, mécanique d'entité ou adaptation d'un event.
-              </p>
-            </div>
+            <h3 class="offer-title">Mécanique de gameplay Fabric</h3>
+            <p class="offer-desc">
+              Une fonctionnalité jouable avec un objectif principal : règles et critères de réussite définis ensemble, sur une version de Minecraft/Fabric convenue. Petit mod autonome par défaut ; intégration dans un mod existant après examen et devis.
+            </p>
             <ul class="offer-list">
-              <li>Cadrage écrit du périmètre exact</li>
-              <li>Intégration propre dans votre mod existant</li>
-              <li>Vidéo de démonstration avant livraison</li>
+              <li>Périmètre et comportement attendus cadrés par écrit</li>
+              <li>Livrables définis au devis : mod, sources et notice selon le projet</li>
+              <li>Tests fonctionnels documentés sur l'environnement convenu</li>
             </ul>
           </div>
-          <button class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="copyDiscord()">
-            COMMANDER UNE MÉCANIQUE
+          <button type="button" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="selectOffer('mecanique')">
+            DEMANDER UN DEVIS DE MÉCANIQUE
           </button>
         </div>
       </div>
@@ -967,20 +1052,20 @@
       <!-- Processus de travail sécurisé -->
       <div class="process-bar">
         <div class="process-col">
-          <h5>01. BRIEF COURT</h5>
-          <p>Vous envoyez votre version de Fabric, vos logs ou votre besoin précis.</p>
+          <h5>01. DÉCRIRE LE BESOIN</h5>
+          <p>Copiez le brief ci-dessous et envoyez-le sur Discord, sans partager de secret.</p>
         </div>
         <div class="process-col">
-          <h5>02. FAISABILITÉ &amp; PRIX</h5>
-          <p>Confirmation sous 12h avec un prix forfaitaire ferme. Zéro mauvaise surprise.</p>
+          <h5>02. PREMIER RETOUR</h5>
+          <p>Première réponse sous 48 heures : accusé de réception, question ou avis préliminaire.</p>
         </div>
         <div class="process-col">
-          <h5>03. PREUVE VIDÉO</h5>
-          <p>Démonstration enregistrée prouvant la résolution avant toute finalisation.</p>
+          <h5>03. DEVIS APRÈS CADRAGE</h5>
+          <p>Périmètre, livrables, prix forfaitaire et calendrier proposés après examen du besoin.</p>
         </div>
         <div class="process-col">
-          <h5>04. LIVRAISON GIT</h5>
-          <p>Code propre transmis par PR GitHub, patch ou fichier .jar sous 24 à 48h.</p>
+          <h5>04. ACCORD ÉCRIT</h5>
+          <p>Réalisation après validation écrite du devis ; changement de périmètre soumis à votre accord.</p>
         </div>
       </div>
 
@@ -989,17 +1074,52 @@
 
     <!-- Contact Direct -->
     <section class="contact-panel" id="contact">
-      <h2 class="contact-title">DÉMARRER UN PROJET OU POSER UNE QUESTION</h2>
+      <h2 class="contact-title">DÉCRIRE MON BESOIN</h2>
+      <p class="contact-subtitle">Décrivez un problème ou une fonctionnalité pour demander un devis. Une première réponse arrive sous 48 heures ; le devis et le délai de réalisation sont fixés après examen.</p>
+      <button id="open-brief" type="button" class="btn-voxel btn-voxel-primary" onclick="openBrief()">DÉCRIRE MON BESOIN</button>
 
-      <div class="placeholder-box" style="max-width: 580px; margin: 0 auto 24px;">
-        <span class="placeholder-tag">[TEXTE À ÉCRIRE - APPEL AU CONTACT]</span>
-        <p class="contact-subtitle" style="margin-bottom: 0;">
-          <em>(Placeholder)</em> : Indique ici comment tu souhaites que les gens te contactent (par exemple : en t'envoyant un message direct sur Discord avec un lien vers leur repo ou une description de leur problème).
-        </p>
+      <form id="brief-form" class="brief-form" onsubmit="copyBrief(event)" hidden>
+        <button type="button" class="btn-voxel btn-voxel-ghost brief-field-wide" style="justify-content: center;" onclick="closeBrief()">FERMER LE BRIEF</button>
+        <label class="brief-field" for="brief-offer">Type de demande
+          <select id="brief-offer" required>
+            <option value="Audit &amp; diagnostic ciblé">Audit &amp; diagnostic ciblé</option>
+            <option value="Mécanique de gameplay Fabric">Mécanique de gameplay Fabric</option>
+            <option value="Autre demande (devis personnalisé)">Autre demande (devis personnalisé)</option>
+          </select>
+        </label>
+        <label class="brief-field" for="brief-version">Version Minecraft/Fabric
+          <input id="brief-version" type="text" placeholder="Ex. 1.21.1 ou Je ne sais pas" required>
+        </label>
+        <label class="brief-field brief-field-wide" for="brief-goal">Que voulez-vous obtenir ou résoudre ?
+          <textarea id="brief-goal" placeholder="Quand je fais X, il se passe Y…" required></textarea>
+        </label>
+        <label class="brief-field" for="brief-context">Contexte du projet
+          <select id="brief-context" required>
+            <option value="Je ne sais pas">Je ne sais pas</option>
+            <option value="Solo">Solo</option>
+            <option value="Serveur">Serveur</option>
+            <option value="Solo et serveur">Solo et serveur</option>
+          </select>
+        </label>
+        <label class="brief-field" for="brief-discord">Votre pseudo Discord
+          <input id="brief-discord" type="text" autocomplete="off" placeholder="Votre pseudo (pas votre mot de passe)" required>
+        </label>
+        <label class="brief-field brief-field-wide" for="brief-result">Comment saurez-vous que le travail est réussi ?
+          <textarea id="brief-result" placeholder="Une phrase suffit." required></textarea>
+        </label>
+        <label class="brief-field brief-field-wide" for="brief-links">Liens et informations utiles (facultatif)
+          <textarea id="brief-links" placeholder="Dépôt autorisé, logs d'audit via un lien, captures… Aucun mot de passe ni jeton."></textarea>
+        </label>
+        <button type="submit" class="btn-voxel btn-voxel-primary brief-field-wide" style="justify-content: center;">COPIER LE BRIEF POUR DISCORD</button>
+      </form>
+      <p id="brief-help" class="brief-help" hidden>Copiez ce brief et envoyez-le à <strong>mcadiie</strong> sur Discord. Copier le texte ne l'envoie pas automatiquement. Ne partagez aucun secret.</p>
+      <div id="brief-fallback" class="brief-fallback" hidden>
+        <label for="brief-message">Copie automatique indisponible : sélectionnez et copiez ce message manuellement.</label>
+        <textarea id="brief-message" readonly></textarea>
       </div>
 
       <div class="contact-buttons">
-        <button class="btn-voxel btn-voxel-primary" onclick="copyDiscord()">
+        <button type="button" class="btn-voxel btn-voxel-ghost" onclick="copyDiscord()">
           COPIER MON DISCORD (mcadiie)
         </button>
 
@@ -1016,7 +1136,7 @@
     <span>DISCORD : mcadiie · MINECRAFT FABRIC SYSTEMS</span>
   </footer>
 
-  <div id="toast" class="toast">DISCORD COPIÉ : mcadiie</div>
+  <div id="toast" class="toast" role="status" aria-live="polite">DISCORD COPIÉ : mcadiie</div>
 
   <script>
     // Détection de la présence de la vidéo
@@ -1105,16 +1225,75 @@
       if (activeView) activeView.style.display = 'block';
     }
 
+    function openBrief() {
+      document.getElementById('brief-form').hidden = false;
+      document.getElementById('brief-help').hidden = false;
+      document.getElementById('open-brief').hidden = true;
+      document.getElementById('brief-offer').focus();
+    }
+
+    function closeBrief() {
+      document.getElementById('brief-form').hidden = true;
+      document.getElementById('brief-help').hidden = true;
+      document.getElementById('brief-fallback').hidden = true;
+      const opener = document.getElementById('open-brief');
+      opener.hidden = false;
+      opener.focus();
+    }
+
+    function selectOffer(type) {
+      openBrief();
+      const offer = document.getElementById('brief-offer');
+      offer.value = type === 'audit' ? 'Audit & diagnostic ciblé' : 'Mécanique de gameplay Fabric';
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', '#contact');
+      document.getElementById('brief-goal').focus({ preventScroll: true });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    async function copyBrief(event) {
+      event.preventDefault();
+      const form = document.getElementById('brief-form');
+      if (!form.reportValidity()) return;
+      const field = id => document.getElementById(id).value.trim();
+      const message = [
+        'Bonjour, je souhaite demander un devis.',
+        'Offre : ' + field('brief-offer'),
+        'Objectif ou problème : ' + field('brief-goal'),
+        'Version Minecraft/Fabric : ' + field('brief-version'),
+        'Contexte (solo / serveur / inconnu) : ' + field('brief-context'),
+        'Résultat attendu : ' + field('brief-result'),
+        'Liens et informations utiles : ' + (field('brief-links') || 'Non précisés'),
+        'Mon pseudo Discord : ' + field('brief-discord')
+      ].join('\n');
+      try {
+        await navigator.clipboard.writeText(message);
+        document.getElementById('brief-fallback').hidden = true;
+        showToast('BRIEF COPIÉ — À ENVOYER SUR DISCORD À mcadiie');
+      } catch {
+        const fallback = document.getElementById('brief-fallback');
+        const output = document.getElementById('brief-message');
+        output.value = message;
+        fallback.hidden = false;
+        output.focus();
+        output.select();
+      }
+    }
+
     // Copie Discord
-    function copyDiscord() {
-      navigator.clipboard.writeText('mcadiie').then(() => {
-        const toast = document.getElementById('toast');
-        toast.textContent = "DISCORD COPIÉ DANS LE PRESSE-PAPIER : mcadiie";
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-      }).catch(() => {
-        alert("Discord : mcadiie");
-      });
+    async function copyDiscord() {
+      try {
+        await navigator.clipboard.writeText('mcadiie');
+        showToast('DISCORD COPIÉ DANS LE PRESSE-PAPIER : mcadiie');
+      } catch {
+        showToast('COPIE INDISPONIBLE — DISCORD : mcadiie');
+      }
     }
   </script>
 </body>
