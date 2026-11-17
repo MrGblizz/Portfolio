@@ -1,180 +1,1121 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b101a">
-  <meta name="description" content="M. CadIIE — Minecraft Fabric gameplay systems, procedural VFX studies and short-form editing for independent creators.">
-  <title>M. CadIIE — Creative Developer / Minecraft & Video</title>
-  <style>
-:root{color-scheme:dark;--bg:#0b101a;--surface:#111b29;--panel:#17212d;--line:#485566;--muted:#9caaba;--white:#f5f6ee;--aqua:#51edcf;--lime:#a8ef73;--orange:#ffad53;--pixel:2px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;background:var(--bg);color:var(--white);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}button,a{touch-action:manipulation}a{color:inherit}button{font-family:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--aqua);outline-offset:5px}.shell{width:min(1190px,calc(100% - 48px));margin:0 auto}.world-grid{pointer-events:none;position:fixed;inset:0;background:linear-gradient(#fff2 1px,transparent 1px),linear-gradient(90deg,#fff2 1px,transparent 1px);background-size:72px 72px;opacity:.075;z-index:-1}.topbar{position:sticky;top:0;z-index:12;background:#0c121ded;backdrop-filter:blur(14px);border-bottom:2px solid #273745}.nav-row{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:84px}.brand{display:flex;gap:12px;align-items:center;text-decoration:none;font-weight:950;letter-spacing:.025em;font-size:18px;line-height:1.05}.brand-mark{width:49px;height:49px;display:grid;place-items:center;background:var(--aqua);color:#132b2a;font:900 16px ui-monospace,monospace;border:2px solid #dbfff0;box-shadow:5px 5px 0 #238e83;clip-path:polygon(0 0,89% 0,100% 12%,100% 100%,0 100%)}.brand small{display:block;font:600 9px/1.6 ui-monospace,monospace;letter-spacing:.13em;color:#88a5a3;margin-top:4px}.glow-letter{color:var(--aqua)}.nav-links{display:flex;align-items:center;gap:29px}.nav-links a{font:700 11px/1.5 ui-monospace,monospace;letter-spacing:.06em;text-decoration:none;color:#cad5d6}.nav-links a:hover{color:var(--aqua)}.nav-links .nav-contact{color:#101923;background:var(--aqua);padding:13px 15px;box-shadow:3px 3px 0 #1b7975}.hero{min-height:680px;position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:42px;align-items:center;padding-top:64px;padding-bottom:93px}.hero:before{content:"";position:absolute;pointer-events:none;inset:0;background:radial-gradient(ellipse at 78% 46%,#16575e3d,transparent 49%);z-index:-1}.eyebrow,.section-id,.tiny-kicker{font:750 11px/1.5 ui-monospace,monospace;letter-spacing:.12em;color:var(--aqua)}.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:27px}.signal{height:8px;width:8px;background:var(--aqua);box-shadow:0 0 10px var(--aqua)}.muted-flag{color:#90a2b7;font-size:10px}.hero h1{font:950 clamp(48px,6.1vw,88px)/.97 system-ui,sans-serif;letter-spacing:-.09em;margin:0 0 27px;text-shadow:3px 3px 0 #08121b}.headline-white{color:#fff}.headline-green,.aqua{color:var(--aqua)}.pixel-dot{color:var(--orange)}.hero-lead{font-size:17px;line-height:1.75;color:#bdc7d0;max-width:540px;margin:0}.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:31px}.block-button{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:52px;padding:0 20px;text-decoration:none;font:850 12px ui-monospace,monospace;letter-spacing:.025em;border:2px solid #485563;box-shadow:5px 5px 0 #040810;transition:transform .15s,box-shadow .15s}.block-button:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #040810}.block-button.primary{background:var(--aqua);border-color:#a5ffe1;color:#102322}.block-button.ghost{background:#15202c}.hero-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#7c8e9e;margin:27px 0 0;font:700 10px/1.8 ui-monospace,monospace;letter-spacing:.06em}.hero-meta i{height:5px;width:5px;background:#637688;transform:rotate(45deg)}.aura-console{position:relative;isolation:isolate;background:#111a29;border:3px solid #768393;box-shadow:8px 8px 0 #050810,-3px -3px 0 #1e303c;padding:10px;min-width:0}.aura-console:before,.aura-console:after{content:"";position:absolute;pointer-events:none;background:#dce9e3;height:4px;width:46px;top:-3px;left:25px}.aura-console:after{left:auto;right:25px;bottom:-3px;top:auto;background:var(--aqua)}.console-top,.console-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;font:700 11px ui-monospace,monospace;color:#c5d6d7}.console-top{padding:6px 7px 15px}.console-led{height:9px;width:9px;background:var(--aqua);box-shadow:0 0 14px #51edcf}.console-code{color:#8ca0ad;margin-left:auto}.scene{height:min(31.8vw,411px);min-height:335px;position:relative;overflow:hidden;background:linear-gradient(180deg,#162638,#1e364b 60%,#18242c 60%,#1e2c2e 100%);border:2px solid #344b61}.scene:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 96%,#c6e2ef10 97%),linear-gradient(90deg,transparent 96%,#c6e2ef10 97%);background-size:23px 23px;opacity:.8}.scene:after{content:"";position:absolute;bottom:0;left:0;right:0;height:27%;background:repeating-linear-gradient(90deg,transparent 0 27px,#12191b40 27px 29px),repeating-linear-gradient(0deg,transparent 0 22px,#12191b80 22px 24px);opacity:.46;transform:perspective(140px) rotateX(37deg);transform-origin:bottom}.scene canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;image-rendering:pixelated;filter:drop-shadow(0 0 13px #00ffe688)}.scene-scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#00000013 4px);pointer-events:none;z-index:3}.horizon{position:absolute;left:0;right:0;top:60%;height:2px;background:#9ed0df30}.scene-coordinate{position:absolute;z-index:4;bottom:12px;left:11px;color:#b3e7e8;font:700 9px ui-monospace,monospace}.scene-coordinate.right{left:auto;right:11px}.viewport-corner{position:absolute;width:20px;height:20px;border:3px solid var(--aqua);z-index:4;opacity:.7}.top-left{top:10px;left:10px;border-right:0;border-bottom:0}.top-right{top:10px;right:10px;border-left:0;border-bottom:0}.bottom-left{bottom:10px;left:10px;border-right:0;border-top:0}.bottom-right{bottom:10px;right:10px;border-left:0;border-top:0}.console-bottom{padding:14px 7px 5px}.console-bottom b{display:block;color:#e6f1f1;font-size:11px}.console-bottom small{display:block;font:10px/1.6 ui-monospace,monospace;color:#8198a9;margin-top:5px}.scene-controls{display:flex;align-items:center;gap:7px}.scene-controls button{cursor:pointer;background:#233944;border:1px solid #627c85;color:#c2f4eb;padding:10px 9px;font:700 10px ui-monospace,monospace;white-space:nowrap}.scene-controls button:hover{background:#345658}.hero-index{position:absolute;bottom:35px;left:0;color:#6d7e8d;font:700 10px ui-monospace,monospace;letter-spacing:.08em}.ticker{background:#182727;border-block:2px solid #41675f;box-shadow:0 3px 0 #0a1117;overflow:hidden}.ticker-items{min-height:50px;display:flex;gap:18px;align-items:center;justify-content:space-between;white-space:nowrap;font:800 11px ui-monospace,monospace;color:#c1f7de}.diamond{color:var(--orange)}.section{padding-top:112px;scroll-margin-top:82px}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:36px;margin-bottom:34px}.section h2{font:950 clamp(40px,5.1vw,70px)/1.02 system-ui,sans-serif;letter-spacing:-.08em;margin:15px 0 0}.heading-aside{max-width:365px;margin:0 0 4px;line-height:1.72;font-size:15px;color:#9eb0bf}.pixel-frame{background:#131c2b;border:2px solid #596a7b;box-shadow:6px 6px 0 #070b11}.project-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:24px}.project-visual{margin:0;overflow:hidden}.project-visual img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;image-rendering:auto}.visual-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#0d1723;padding:12px 13px;font:700 10px/1.5 ui-monospace,monospace;color:#91a7ae;letter-spacing:.04em}.tag-green{background:#274c3e;color:#bef4c1;padding:5px 7px;border-left:3px solid #6af49e}.tag-fire{background:#493224;color:#ffd0a1;padding:5px 7px;border-left:3px solid var(--orange)}figcaption{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:14px;background:#101d2d;font:800 10px ui-monospace,monospace;color:#e2f1ea}figcaption span{font-weight:600;color:#92a2ae}.feature-aside{padding:30px;position:relative;overflow:hidden}.feature-aside:after{content:"";position:absolute;right:0;top:0;width:24px;height:24px;background:linear-gradient(135deg,#627684 50%,transparent 50%)}.feature-aside h3,.vfx-copy h3{font:900 clamp(24px,2.7vw,36px)/1.1 system-ui,sans-serif;letter-spacing:-.055em;margin:18px 0 15px}.feature-aside p,.vfx-copy p{font-size:14px;line-height:1.65;color:#aebbc7;max-width:520px}.block-stack{border:2px dashed #3f5562;background:#0d1521;min-height:180px;margin-top:25px;padding:19px;display:flex;flex-direction:column;align-items:start;gap:5px;overflow:hidden}.block{white-space:nowrap;max-width:95%;font:800 10px ui-monospace,monospace;color:#121925;padding:7px 11px;box-shadow:3px 3px 0 #080e15;clip-path:polygon(0 0,13% 0,16% 12%,21% 12%,24% 0,100% 0,100% 100%,0 100%)}.block.yellow{background:#ffcd47}.block.sky{background:#5bd0ee}.block.orange{background:#ff8f47}.block.lime{background:#9cf277}.block.rose{background:#f46cb8}.block.nested{margin-left:14px}.block.nested-2{margin-left:30px}.block.nested-3{margin-left:46px}.feature-note{margin-top:18px;color:#89a18b;font:700 10px/1.5 ui-monospace,monospace}.mini-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.mini-facts>div{background:#131b26;border-left:3px solid #3e7b76;padding:19px 22px}.mini-facts span{font:700 10px ui-monospace,monospace;color:var(--aqua)}.mini-facts strong{display:block;font:800 12px ui-monospace,monospace;margin:5px 0 7px}.mini-facts small{color:#899eab;font-size:12px}.flame{color:var(--orange)}.vfx-showcase{display:grid;grid-template-columns:1.2fr .8fr}.aura-image{min-width:0}.aura-image img{display:block;width:100%;height:100%;max-height:450px;object-fit:cover;object-position:center}.vfx-copy{padding:33px;background:linear-gradient(125deg,#252637,#18202a);border-left:2px solid #596a7b}.vfx-copy h3{font-size:clamp(25px,2.7vw,38px)}.small-disclaimer{font-size:12px!important;line-height:1.7;color:#8198a8!important}.vfx-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}.vfx-tags span{font:700 10px ui-monospace,monospace;border:1px solid #5f6975;padding:9px 10px;color:#ffd0a8}.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.service-card{padding:25px;min-height:340px;display:flex;flex-direction:column;border:2px solid #495d68;background:#14212a;box-shadow:5px 5px 0 #050810;transition:transform .14s,box-shadow .14s}.service-card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #050810}.service-card:nth-child(2){background:#192429}.service-card:nth-child(3){background:#21212b}.service-top{display:flex;justify-content:space-between;font:800 11px ui-monospace,monospace;color:#9cacb8}.diamond-sm{font-size:23px;color:#93f3bb}.service-card h3{font:900 clamp(22px,2.1vw,31px)/1.1 system-ui,sans-serif;letter-spacing:-.052em;margin:27px 0 15px}.service-card p{font-size:14px;color:#aab9c5;line-height:1.7;margin:0}.service-bottom{margin-top:auto;padding-top:22px;display:flex;align-items:center;justify-content:space-between;font:700 11px ui-monospace,monospace;color:var(--aqua)}.service-bottom span{font-size:19px}.process-box{padding:37px;display:grid;grid-template-columns:.8fr 1.2fr;gap:55px}.process-box h2{font-size:clamp(32px,3.4vw,46px)}.process-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.process-steps>div{padding:10px 0 15px;border-bottom:1px solid #495f69}.process-steps span{font:800 12px ui-monospace,monospace;color:var(--orange)}.process-steps p{font-size:14px;margin:12px 0 0;color:#becacb}.contact-panel{position:relative;overflow:hidden;border:3px solid #6acbb1;background:radial-gradient(circle at 90% 65%,#215956 0,#143334 28%,#16242e 70%);padding:65px 7%;box-shadow:8px 8px 0 #04090d}.contact-panel h2{font-size:clamp(47px,6.2vw,84px);margin:22px 0}.contact-panel>p:not(.small-disclaimer){font-size:16px;line-height:1.7;max-width:570px;color:#becdd0}.contact-pixels{position:absolute;right:7%;bottom:0;pointer-events:none;width:190px;height:195px;opacity:.35;background:repeating-linear-gradient(90deg,transparent 0 26px,#5eeac3 26px 29px),repeating-linear-gradient(0deg,transparent 0 26px,#5eeac3 26px 29px);mask-image:linear-gradient(0deg,#000,transparent)}.footer{padding:48px 0 32px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font:700 10px ui-monospace,monospace;color:#718697}.footer a{color:var(--aqua);text-decoration:none}
-@media(max-width:980px){.hero{grid-template-columns:1fr;gap:35px}.hero-copy{max-width:750px}.hero h1{font-size:clamp(60px,9vw,90px)}.aura-console{max-width:620px;width:100%;justify-self:center}.scene{height:460px}.project-grid,.vfx-showcase{grid-template-columns:1fr}.vfx-copy{border-left:0;border-top:2px solid #596a7b}.aura-image img{max-height:none;aspect-ratio:5/3;object-fit:cover}.ticker-items{justify-content:flex-start;overflow:hidden}.service-card h3{font-size:25px}}
-@media(max-width:660px){.shell{width:min(100% - 30px,1190px)}.nav-row{min-height:78px}.brand{font-size:15px}.brand-mark{width:41px;height:41px;font-size:14px}.nav-links{gap:12px}.nav-links a{font-size:10px}.nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}.nav-links .nav-contact{padding:10px}.hero{padding-top:53px;padding-bottom:75px;min-height:0}.hero h1{font-size:clamp(48px,11vw,69px)}.hero-lead{font-size:15px}.muted-flag{display:none}.aura-console{padding:7px}.scene{height:330px;min-height:0}.console-top,.console-bottom{font-size:10px}.console-bottom small{max-width:210px}.scene-controls{align-self:flex-end}.scene-controls button{padding:9px 6px;font-size:9px}.hero-index{bottom:25px}.section{padding-top:76px;scroll-margin-top:74px}.section-heading{display:block}.section h2{font-size:clamp(43px,9vw,59px)}.heading-aside{margin:23px 0 0;max-width:550px}.project-grid{gap:16px}.feature-aside{padding:24px}.mini-facts{grid-template-columns:1fr;gap:9px}.vfx-copy{padding:23px}.service-grid{grid-template-columns:1fr}.service-card{min-height:255px}.service-card h3{margin:16px 0 11px}.process-box{grid-template-columns:1fr;gap:25px;padding:24px}.contact-panel{padding:37px 22px}.contact-panel h2{font-size:clamp(48px,10vw,70px)}.footer{padding-top:37px}.ticker-items{font-size:10px}.visual-top,figcaption{font-size:9px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M. CadIIE — Développeur Fabric & Gameplay Systems</title>
 
-</style>
-  
+  <!-- Polices : Silkscreen pour les accents Minecraft/Pixel + Inter/Mono pour le texte lisible -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette Forge & Ambre chaud */
+      --bg: #0c0a09;             /* Pierre très sombre / Anthracite chaud */
+      --panel: #171412;          /* Bloc de forge */
+      --panel-hover: #211d19;
+      --border: #38302a;         /* Bordure taillée nette */
+      --border-accent: #f59e0b;  /* Ambre chaud / Redstone dorée */
+      --amber: #f59e0b;
+      --orange: #ea580c;
+      --ember: #fb923c;
+      --text: #f5f0eb;           /* Ivoire chaud */
+      --text-muted: #a89f91;     /* Pierre claire / lin */
+      --text-dim: #6b6357;
+
+      /* Typographie */
+      --font-pixel: 'Silkscreen', monospace;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Space Grotesk', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image:
+        radial-gradient(ellipse at 80% 0%, rgba(234, 88, 12, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 10% 40%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* En-tête / Navigation brute */
+    header {
+      padding: 20px 0;
+      border-bottom: 2px solid var(--border);
+      background: rgba(12, 10, 9, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-cube {
+      width: 38px;
+      height: 38px;
+      background: var(--orange);
+      border: 2px solid var(--amber);
+      box-shadow: 3px 3px 0px #000;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-pixel);
+      font-weight: 700;
+      font-size: 14px;
+      color: #0c0a09;
+    }
+
+    .brand-title {
+      font-family: var(--font-pixel);
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber);
+      display: block;
+    }
+
+    .status-pill {
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      padding: 6px 12px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 2px solid var(--amber);
+      color: var(--amber);
+      box-shadow: 2px 2px 0px #000;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-light {
+      width: 8px;
+      height: 8px;
+      background: var(--amber);
+      box-shadow: 0 0 6px var(--amber);
+      display: inline-block;
+    }
+
+    /* Hero avec Présentation Personnelle */
+    .hero {
+      padding: 64px 0 40px;
+    }
+
+    .hero-layout {
+      display: grid;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero-layout {
+        grid-template-columns: 240px 1fr;
+      }
+    }
+
+    /* Cadre Photo Voxel */
+    .photo-wrapper {
+      position: relative;
+      width: 220px;
+      margin: 0 auto;
+    }
+
+    .photo-frame {
+      width: 220px;
+      height: 220px;
+      background: var(--panel);
+      border: 3px solid var(--border-accent);
+      box-shadow: 8px 8px 0px #000, 8px 8px 0px 2px var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05);
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      background: rgba(12, 10, 9, 0.88);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--amber);
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    /* Texte de présentation */
+    .hero-kicker {
+      font-family: var(--font-pixel);
+      font-size: 12px;
+      color: var(--orange);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: var(--font-sans);
+      font-size: clamp(32px, 4.5vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .hero-title .glow {
+      color: var(--amber);
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+    }
+
+    .placeholder-box {
+      border: 1px dashed var(--amber);
+      background: rgba(245, 158, 11, 0.04);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .placeholder-tag {
+      position: absolute;
+      top: -10px;
+      left: 14px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+
+    .hero-bio {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Boutons Voxel Bruts */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .btn-voxel {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      font-family: var(--font-pixel);
+      font-size: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      border: 2px solid;
+    }
+
+    .btn-voxel-primary {
+      background: var(--orange);
+      border-color: var(--amber);
+      color: #0c0a09;
+      box-shadow: 5px 5px 0px #000;
+      font-weight: 700;
+    }
+
+    .btn-voxel-primary:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0px #000;
+      background: var(--ember);
+    }
+
+    .btn-voxel-primary:active {
+      transform: translate(5px, 5px);
+      box-shadow: 0px 0px 0px #000;
+    }
+
+    .btn-voxel-ghost {
+      background: var(--panel);
+      border-color: var(--border);
+      color: var(--text);
+      box-shadow: 5px 5px 0px #000;
+    }
+
+    .btn-voxel-ghost:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0px #000;
+    }
+
+    .btn-voxel-ghost:active {
+      transform: translate(5px, 5px);
+      box-shadow: 0px 0px 0px #000;
+    }
+
+    /* Section Vitrine Démo Vidéo */
+    .section {
+      padding: 48px 0;
+      border-top: 2px solid var(--border);
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      color: var(--orange);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-pixel);
+      font-size: 22px;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    /* Cadre Lecteur Vidéo Voxel */
+    .video-showcase {
+      display: grid;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .video-showcase {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .video-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    .video-block {
+      background: #000;
+      border: 3px solid var(--border);
+      box-shadow: 8px 8px 0px #000;
+      position: relative;
+    }
+
+    .video-bar {
+      background: var(--panel);
+      padding: 8px 14px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .video-bar-title {
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-bar-dot {
+      width: 6px;
+      height: 6px;
+      background: #ef4444;
+      display: inline-block;
+    }
+
+    .video-player-frame {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-player-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      background: radial-gradient(circle, #211913 0%, #0c0a09 100%);
+      color: var(--text-muted);
+    }
+
+    .video-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(234, 88, 12, 0.15);
+      border: 2px solid var(--amber);
+      box-shadow: 3px 3px 0px #000;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      color: var(--amber);
+      font-family: var(--font-pixel);
+      font-size: 18px;
+    }
+
+    .video-placeholder strong {
+      font-family: var(--font-pixel);
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .video-placeholder p {
+      font-size: 12.5px;
+      max-width: 320px;
+      color: var(--text-muted);
+    }
+
+    .video-badge-target {
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--border);
+      color: var(--amber);
+    }
+
+    /* Panneau descriptif du projet */
+    .project-card {
+      background: var(--panel);
+      border: 2px solid var(--border);
+      box-shadow: 6px 6px 0px #000;
+      padding: 24px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag-voxel {
+      font-family: var(--font-pixel);
+      font-size: 10px;
+      padding: 4px 8px;
+      background: #110e0c;
+      border: 1px solid var(--border);
+      color: var(--amber);
+    }
+
+    .project-specs {
+      list-style: none;
+      margin: 18px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .project-specs li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .project-specs li span {
+      color: var(--amber);
+      font-family: var(--font-pixel);
+      font-size: 11px;
+    }
+
+    /* Grille des Prestations / Offres */
+    .offers-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (min-width: 720px) {
+      .offers-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .offer-box {
+      background: var(--panel);
+      border: 2px solid var(--border);
+      box-shadow: 6px 6px 0px #000;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .offer-box:hover {
+      border-color: var(--amber);
+    }
+
+    .offer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .offer-badge {
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      color: var(--amber);
+    }
+
+    .offer-price {
+      font-family: var(--font-pixel);
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .offer-title {
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .offer-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .offer-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .offer-list li:before {
+      content: "▪";
+      color: var(--orange);
+      margin-right: 8px;
+    }
+
+    /* Processus / Règle de travail */
+    .process-bar {
+      margin-top: 36px;
+      background: #110e0c;
+      border: 2px solid var(--border);
+      box-shadow: 6px 6px 0px #000;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .process-col h5 {
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+
+    .process-col p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Contact Direct */
+    .contact-panel {
+      background: var(--panel);
+      border: 3px solid var(--border-accent);
+      box-shadow: 8px 8px 0px #000;
+      padding: 36px 28px;
+      text-align: center;
+      margin: 40px 0 64px;
+    }
+
+    .contact-title {
+      font-family: var(--font-pixel);
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .contact-subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* Toast de copie */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--amber);
+      color: #0c0a09;
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      padding: 10px 18px;
+      border: 2px solid #fff;
+      box-shadow: 4px 4px 0px #000;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      border-top: 2px solid var(--border);
+      padding: 24px 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
 </head>
 <body>
-  <div class="world-grid" aria-hidden="true"></div>
-  <header class="topbar">
-    <div class="shell nav-row">
-      <a class="brand" href="#top" aria-label="M. CadIIE homepage"><span class="brand-mark" aria-hidden="true">MC</span><span>M. CAD<span class="glow-letter">IIE</span><small>CREATIVE DEVELOPER</small></span></a>
-      <nav aria-label="Primary navigation" class="nav-links"><a href="#work">PROJECT</a><a href="#vfx">VFX</a><a href="#services">SERVICES</a><a class="nav-contact" href="#contact">CONTACT <span aria-hidden="true">↗</span></a></nav>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-row">
+      <a href="#" class="brand">
+        <div class="brand-cube">MC</div>
+        <div>
+          <span class="brand-title">M. CadIIE</span>
+          <span class="brand-sub">Fabric / Java Systems</span>
+        </div>
+      </a>
+
+      <div class="status-pill">
+        <span class="status-light"></span>
+        <span>DISPONIBLE POUR MISSIONS</span>
+      </div>
     </div>
   </header>
-  <main id="top">
-    <section class="hero shell" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="signal"></span> AVAILABLE FOR SMALL FREELANCE PROJECTS <span class="muted-flag">// REMOTE · FR / EN</span></div>
-        <h1 id="hero-title">I BUILD<br><span class="headline-white">SYSTEMS</span><br><span class="headline-green">THAT FEEL</span><br>ALIVE<span class="pixel-dot">.</span></h1>
-        <p class="hero-lead">Minecraft Fabric mechanics, programmable game systems, procedural effects and sharp gameplay edits — built with a developer's logic and a creator's eye.</p>
-        <div class="hero-actions"><a class="block-button primary" href="#work">EXPLORE MY WORK <span aria-hidden="true">↘</span></a><a class="block-button ghost" href="#contact">START A PROJECT ↗</a></div>
-        <p class="hero-meta">JAVA / FABRIC <i></i> PYTHON / C++ <i></i> PROCEDURAL VFX <i></i> VIDEO EDITING</p>
+
+  <main class="container">
+    <!-- Hero / Présentation Personnelle -->
+    <section class="hero">
+      <div class="hero-layout">
+        <!-- Photo de profil -->
+        <div class="photo-wrapper">
+          <div class="photo-frame">
+            <img src="avatar.jpg" alt="Photo de profil Mathéo — M. CadIIE" id="profile-img">
+          </div>
+          <div class="photo-badge">M. CadIIE // DEV FABRIC</div>
+        </div>
+
+        <!-- Accroche & Bio avec Placeholder -->
+        <div>
+          <span class="hero-kicker">&gt; IDENTITÉ &amp; SPÉCIALITÉ</span>
+          <h1 class="hero-title">
+            Développeur <span class="glow">Minecraft Fabric</span> &amp;<br>
+            Architecture de Systèmes Java.
+          </h1>
+
+          <!-- Bio Personnelle -->
+          <div class="bio-card" style="background: var(--panel); border: 2px solid var(--border); box-shadow: 6px 6px 0px #000; padding: 22px; margin-bottom: 24px;">
+            <p class="hero-bio">
+              Je suis étudiant en deuxième année à l'<strong>École Nationale Supérieure d'Informatique pour l'Industrie et l'Entreprise</strong> (ENSIIE, France). L'expertise que j'y acquiers est le <strong>calcul haute performance (HPC)</strong>.
+            </p>
+            <p class="hero-bio" style="margin-top: 12px;">
+              Cette expertise est couplée à un esprit créatif qui ne se contente pas du « déjà-vu ». Mon bagage scientifique me permet de concevoir du code hautement performant ainsi que d'effectuer des recherches sur des méthodes algorithmiques innovantes pour créer de nouvelles expériences de jeu.
+            </p>
+            <p class="hero-bio" style="margin-top: 12px;">
+              Je développe moi-même un projet de mod Minecraft inspiré du système de pouvoirs de <em>Hunter × Hunter</em>, alliant recherches en VFX et en mécanique des fluides pour proposer des effets procéduraux uniques. J'apporte ainsi une vision artistique en plus d'une expertise technique en HPC, couplée à une capacité de recherche scientifique pour créer des expériences de jeu uniques pour vos projets.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#demo" class="btn-voxel btn-voxel-primary">
+              VOIR LA DÉMO VIDÉO ↓
+            </a>
+            <button class="btn-voxel btn-voxel-ghost" onclick="copyDiscord()">
+              DISCORD : mcadiie
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="aura-console" aria-label="Animated aura art study inspired by the project's visual direction">
-        <div class="console-top"><span class="console-led"></span><strong>AURA // LIVE STUDY</strong><span class="console-code">WEB_001</span></div>
-        <div class="scene"><div class="scene-scan"></div><div class="horizon"></div><canvas id="aura-canvas" role="img" aria-label="Animated pixel-style aura around a stylized voxel character. Website-only illustration, not the original Minecraft shader." width="400" height="400"></canvas><div class="viewport-corner top-left"></div><div class="viewport-corner top-right"></div><div class="viewport-corner bottom-left"></div><div class="viewport-corner bottom-right"></div><span class="scene-coordinate">X: 040 / Y: 096</span><span class="scene-coordinate right">FPS: AUTO</span></div>
-        <div class="console-bottom"><div><b>PROCEDURAL FLAME</b><small>Independent web illustration · original shader not included</small></div><div class="scene-controls"><button id="palette-switch" type="button" aria-label="Switch aura palette" title="Switch palette">CYAN ↔ FIRE</button><button id="motion-switch" type="button" aria-label="Pause aura animation" title="Pause animation">Ⅱ</button></div></div>
+
+
+    </section>
+
+    <!-- Vitrine Démo Vidéo (Unique & 100% Fabric) -->
+    <section class="section" id="demo">
+      <div class="section-header">
+        <span class="section-kicker">&gt; 01 // PREUVE TECHNIQUE</span>
+        <h2 class="section-title">DÉMONSTRATION EN CONDITIONS RÉELLES</h2>
       </div>
-      <div class="hero-index">001 / PERSONAL PORTFOLIO · WORK IN PROGRESS</div>
-    </section>
-    <div class="ticker" aria-label="Key skills"><div class="shell ticker-items"><span>GAME SYSTEM DESIGN</span><span class="diamond">◆</span><span>MODDING / FABRIC</span><span class="diamond">◆</span><span>VISUAL PROGRAMMING</span><span class="diamond">◆</span><span>SHADER EXPERIMENTS</span><span class="diamond">◆</span><span>EDITING</span></div></div>
-    <section class="section shell" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><div><span class="section-id">01 / FEATURED PROJECT</span><h2 id="work-title">THE MAGIC<br><span class="aqua">ENGINE<span class="pixel-dot">.</span></span></h2></div><p class="heading-aside">A personal Minecraft Fabric mod evolving into a configurable magic system. An exploration of what happens when players assemble abilities instead of choosing only fixed spells.</p></div>
-      <div class="project-grid">
-        <figure class="project-visual pixel-frame"><div class="visual-top"><span class="tag-green">ACTUAL DEVELOPMENT CAPTURE</span><span>BUILD VERSION MAY VARY</span></div><img src="data:image/webp;base64,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" alt="Genuine in-game screenshot of a colorful visual spell editor, showing event, loop, conditional, charge and effect blocks." loading="lazy" width="640" height="360"><figcaption>01 — VISUAL TECHNIQUE EDITOR <span>SCREENSHOT / HISTORICAL BUILD</span></figcaption></figure>
-        <div class="feature-aside pixel-frame"><span class="tiny-kicker">SYSTEM ARCHITECTURE / 001</span><h3>BUILD A POWER.<br>PROGRAM ITS RULES.</h3><p>The codebase contains a block-based technique editor and server-side execution components. The screenshots here are authentic development captures; the current state of individual features is still being validated.</p><div class="block-stack" aria-label="A conceptual schematic of visual spell logic, not a screenshot"><span class="block yellow">WHEN KEY PRESSED</span><span class="block sky nested">REPEAT UNTIL RELEASE</span><span class="block orange nested-2">CHARGE +1</span><span class="block lime nested-2">IF CHARGE &gt; 5</span><span class="block rose nested-3">PROJECT EFFECT</span></div><div class="feature-note">DESIGNED & DIRECTED BY ME · DEVELOPMENT HEAVILY AI-ASSISTED</div></div>
+
+      <div class="video-showcase">
+        <!-- Colonne Gauche : Vidéo + Carrousel de captures -->
+        <div class="video-column">
+          <!-- Lecteur Vidéo Voxel -->
+          <div class="video-block">
+            <div class="video-bar">
+              <div class="video-bar-title">
+                <span class="video-bar-dot"></span>
+                <span>aura_mod // DÉMO : CATÉGORIE CORPS</span>
+              </div>
+              <span>720P 30FPS</span>
+            </div>
+
+            <div class="video-player-frame">
+              <video controls playsinline preload="metadata" id="main-video" style="width: 100%; height: 100%;">
+                 <source src="demo-categorie-corps.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la balise vidéo.
+              </video>
+
+              <div class="video-placeholder" id="video-placeholder" style="display: none; pointer-events: none;">
+                <div class="video-placeholder-icon">▶</div>
+                <strong>DÉMO VIDÉO EN COURS</strong>
+                 <p>Fichier chargé : <code>demo-categorie-corps.mp4</code></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carrousel de captures d'interface & dioramas 3D -->
+          <div class="carousel-box" style="margin-top: 0; background: var(--panel); border: 2px solid var(--border); box-shadow: 6px 6px 0px #000; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-family: var(--font-pixel); font-size: 10.5px; color: var(--amber);">&gt; DIORAMAS &amp; OUTILS EN JEU</span>
+              <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted);">
+               <span id="carousel-counter" style="color: #fff; font-weight: bold;">1</span> / <span id="carousel-total">10</span>
+              </div>
+            </div>
+
+            <!-- Image de capture compacte -->
+            <div style="position: relative; background: #000; border: 2px solid var(--border); overflow: hidden; height: clamp(160px, 16vw, 195px); display: flex; align-items: center; justify-content: center;">
+                 <img id="carousel-img" src="screens/01_minato_rasengan.png" alt="Combo de téléportation en Visual Scripting sous Minecraft" style="width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.15s ease;">
+            </div>
+
+            <!-- Légende & Boutons -->
+            <div style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+              <p id="carousel-caption" style="font-size: 11.5px; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.35; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                <strong style="color: var(--amber);">[Combo Téléportation &amp; Orbe (8 blocs)]</strong> Kunai lancé ➔ téléportation sur projectile en plein vol ➔ charge 0.5s ➔ Orbe d'impact au contact.
+              </p>
+
+              <div style="display: flex; gap: 6px; flex-shrink: 0;">
+                <button class="btn-voxel" onclick="prevSlide()" style="padding: 5px 10px; font-size: 10px; background: var(--panel); border-color: var(--border); color: #fff;">
+                  ◀
+                </button>
+                <button class="btn-voxel" onclick="nextSlide()" style="padding: 5px 10px; font-size: 10px; background: var(--orange); border-color: var(--amber); color: #0c0a09; font-weight: bold;">
+                  ▶
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fiche descriptive du projet (avec Placeholder de texte) -->
+        <div class="project-card">
+          <div class="project-tags">
+            <span class="tag-voxel">FABRIC API</span>
+            <span class="tag-voxel">JAVA 21</span>
+            <span class="tag-voxel">MIXINS PROPRES</span>
+          </div>
+
+          <!-- Détails techniques du moteur (walkthrough de la démo) -->
+          <div class="project-details-content" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px;">
+            <p style="margin-bottom: 12px; color: var(--text);">
+              <strong>Ce que montre la démo :</strong> À la création du monde, le joueur choisit une spécialité (ici <em>« Corps »</em>, renforçant les aptitudes physiques et ses affinités). L'aura est une flamme pixelisée conçue pour l'esthétique Minecraft, épousant en temps réel la morphologie et la dynamique des mouvements de l'entité (ici en teinte bleue).
+            </p>
+
+            <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); padding: 14px; margin-bottom: 14px;">
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                <li>
+                  <strong style="color: var(--amber);">[K] Éditeur &amp; Mode Entraînement :</strong> Interface en jeu permettant de composer ses pages de sorts avec tutoriels intégrés, et un bac à sable sans limite d'aura pour tester ses mécaniques.
+                </li>
+                <li>
+                  <strong style="color: var(--amber);">[X] Switch de pages en jeu :</strong> Alternance fluide entre la page <em>Combat</em> (renforcement physique, absorption des dégâts sur la réserve d'aura) et la page <em>Mouvement</em> (mobilité vectorielle et dashs).
+                </li>
+                <li>
+                  <strong style="color: var(--amber);">Logique de Serments &amp; Restrictions :</strong> Programmation de sorts avec variables et conditions strictes (ex: grandir/rétrécir sur touche 1/2, réduction de vitesse adverse conditionnée à moins de 5 cœurs). Tout manquement au serment déclenche une sanction immédiate (ici, la mort du joueur).
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <ul class="project-specs">
+            <li><span>[+]</span> <strong>Isolation :</strong> Code modulaire évitant les conflits d'injection Mixin.</li>
+            <li><span>[+]</span> <strong>Stabilité :</strong> Validation rigoureuse du tick rate et du garbage collector.</li>
+            <li><span>[+]</span> <strong>Livrable :</strong> Pull Request Git commentée ou archive .jar prête à tester.</li>
+          </ul>
+
+          <a href="#contact" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center; margin-top: 8px;">
+            DISCUTER D'UN BESOIN SIMILAIRE ↗
+          </a>
+        </div>
       </div>
-      <div class="mini-facts"><div><span>01 /</span><strong>VISUAL LOGIC</strong><small>Composable ability rules</small></div><div><span>02 /</span><strong>SERVER RUNTIME</strong><small>Gameplay execution code</small></div><div><span>03 /</span><strong>ITERATIVE TESTING</strong><small>Prototypes and gameplay trials</small></div></div>
+
+      <!-- ARBRE DES 6 SPÉCIALITÉS D'AURA -->
+      <div style="margin-top: 48px;">
+        <div style="margin-bottom: 20px;">
+          <span class="section-kicker">&gt; ARCHITECTURE DU SYSTÈME</span>
+          <h3 style="font-family: var(--font-pixel); font-size: 18px; color: #fff;">LES 6 SPÉCIALITÉS D'AURA &amp; MÉLANGES</h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">Chaque spécialité possède sa dynamique de particules, ses affinités et ses interactions combinables.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+          <!-- 01 Corps -->
+          <div style="background: var(--panel); border: 2px solid #ea580c; box-shadow: 4px 4px 0px #000; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="width: 10px; height: 10px; background: #ea580c; display: inline-block;"></span>
+              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #ea580c;">Corps (Actif en démo)</strong>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Renforcer son corps, ses objets et des blocs. Frapper plus fort, encaisser, accélérer son temps.</p>
+          </div>
+
+          <!-- 02 Altération -->
+          <div style="background: var(--panel); border: 2px solid #84cc16; box-shadow: 4px 4px 0px #000; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="width: 10px; height: 10px; background: #84cc16; display: inline-block;"></span>
+              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #84cc16;">Altération</strong>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Donner une nature à son aura : feu, poison, glace, électrique, élastique, explosive... et des zones.</p>
+          </div>
+
+          <!-- 03 Façonnage -->
+          <div style="background: var(--panel); border: 2px solid #ec4899; box-shadow: 4px 4px 0px #000; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="width: 10px; height: 10px; background: #ec4899; display: inline-block;"></span>
+              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #ec4899;">Façonnage</strong>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Faire naître des choses : créations programmées, objets, clones, sbires et espace de poche.</p>
+          </div>
+
+          <!-- 04 Perception -->
+          <div style="background: var(--panel); border: 2px solid #60a5fa; box-shadow: 4px 4px 0px #000; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="width: 10px; height: 10px; background: #60a5fa; display: inline-block;"></span>
+              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #60a5fa;">Perception</strong>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">L'information comme arme : sens aiguisés, lire l'aura, voir à distance, balises et révélation.</p>
+          </div>
+
+          <!-- 05 Emprise -->
+          <div style="background: var(--panel); border: 2px solid #c084fc; box-shadow: 4px 4px 0px #000; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="width: 10px; height: 10px; background: #c084fc; display: inline-block;"></span>
+              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #c084fc;">Emprise</strong>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Contrôler les êtres : aveugler, étourdir, lier, télékinésie, voler ou sceller l'aura adverse.</p>
+          </div>
+
+          <!-- 06 Projection -->
+          <div style="background: var(--panel); border: 2px solid #2dd4bf; box-shadow: 4px 4px 0px #000; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="width: 10px; height: 10px; background: #2dd4bf; display: inline-block;"></span>
+              <strong style="font-family: var(--font-pixel); font-size: 13px; color: #2dd4bf;">Projection</strong>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5;">Lancer son aura : projectiles programmés, propulsion, téléportation et portails à distance.</p>
+          </div>
+        </div>
+      </div>
+
+      </section>
+
+    <!-- Services / Prestations ciblées Fabric -->
+    <section class="section" id="offres">
+      <div class="section-header">
+        <span class="section-kicker">&gt; 02 // FORMATS D'INTERVENTION</span>
+        <h2 class="section-title">PRESTATIONS &amp; MISSIONS FORFAITAIRES</h2>
+      </div>
+
+      <div class="offers-grid">
+        <!-- Offre 1 : Bugfix & Conflit -->
+        <div class="offer-box">
+          <div>
+            <div class="offer-header">
+              <span class="offer-badge">CORRECTION / COMPATIBILITÉ</span>
+              <span class="offer-price">35 € – 50 €</span>
+            </div>
+            <h3 class="offer-title">Bugfix &amp; Diagnostic de Crash</h3>
+            <div class="placeholder-box" style="margin-bottom: 16px;">
+              <span class="placeholder-tag">[TEXTE À ÉCRIRE - OFFRE 1]</span>
+              <p class="offer-desc">
+                <em>(Placeholder)</em> : Décris ici ce que tu proposes pour un créateur de mod ou de modpack bloqué par un bug précis, une incompatibilité entre deux mods ou une exception récurrente dans les logs.
+              </p>
+            </div>
+            <ul class="offer-list">
+              <li>Reproduction isolée du problème</li>
+              <li>Patch .diff ou Pull Request Git explicative</li>
+              <li>Preuve de bon fonctionnement en jeu</li>
+            </ul>
+          </div>
+          <button class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="copyDiscord()">
+            DEMANDER UN CORRECTIF
+          </button>
+        </div>
+
+        <!-- Offre 2 : Micro-mécanique -->
+        <div class="offer-box">
+          <div>
+            <div class="offer-header">
+              <span class="offer-badge">DÉVELOPPEMENT CIBLÉ</span>
+              <span class="offer-price">50 € – 75 €</span>
+            </div>
+            <h3 class="offer-title">Micro-Mécanique &amp; Entités</h3>
+            <div class="placeholder-box" style="margin-bottom: 16px;">
+              <span class="placeholder-tag">[TEXTE À ÉCRIRE - OFFRE 2]</span>
+              <p class="offer-desc">
+                <em>(Placeholder)</em> : Décris ici l'ajout d'une mécanique de gameplay délimitée (2 à 4h de travail) : interaction spécifique avec un item, effet de particule, mécanique d'entité ou adaptation d'un event.
+              </p>
+            </div>
+            <ul class="offer-list">
+              <li>Cadrage écrit du périmètre exact</li>
+              <li>Intégration propre dans votre mod existant</li>
+              <li>Vidéo de démonstration avant livraison</li>
+            </ul>
+          </div>
+          <button class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="copyDiscord()">
+            COMMANDER UNE MÉCANIQUE
+          </button>
+        </div>
+      </div>
+
+      <!-- Processus de travail sécurisé -->
+      <div class="process-bar">
+        <div class="process-col">
+          <h5>01. BRIEF COURT</h5>
+          <p>Vous envoyez votre version de Fabric, vos logs ou votre besoin précis.</p>
+        </div>
+        <div class="process-col">
+          <h5>02. FAISABILITÉ &amp; PRIX</h5>
+          <p>Confirmation sous 12h avec un prix forfaitaire ferme. Zéro mauvaise surprise.</p>
+        </div>
+        <div class="process-col">
+          <h5>03. PREUVE VIDÉO</h5>
+          <p>Démonstration enregistrée prouvant la résolution avant toute finalisation.</p>
+        </div>
+        <div class="process-col">
+          <h5>04. LIVRAISON GIT</h5>
+          <p>Code propre transmis par PR GitHub, patch ou fichier .jar sous 24 à 48h.</p>
+        </div>
+      </div>
+
+
     </section>
-    <section class="section shell vfx-section" id="vfx" aria-labelledby="vfx-title">
-      <div class="section-heading"><div><span class="section-id">02 / VISUAL RESEARCH</span><h2 id="vfx-title">FEEL THE<br><span class="flame">ENERGY<span class="pixel-dot">.</span></span></h2></div><p class="heading-aside">Pixelated flames, layered luminosity and expressive silhouettes. The goal is not a static glow: it's a visual language that conveys energy and motion.</p></div>
-      <div class="vfx-showcase pixel-frame"><div class="aura-image"><div class="visual-top"><span class="tag-fire">ORIGINAL IN-GAME CAPTURES</span><span>EXPERIMENTAL VISUALS</span></div><img src="data:image/webp;base64,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" alt="Authentic Minecraft development screenshots showing six aura variations, including orange flame and cyan flame silhouettes." loading="lazy" width="720" height="432"></div><div class="vfx-copy"><span class="tiny-kicker">PROCEDURAL AURA STUDIES</span><h3>MORE THAN<br>A PARTICLE EFFECT.</h3><p>Research into aura silhouettes, flickering flame shapes and layered colors for a distinct Minecraft aesthetic.</p><p class="small-disclaimer">The animated aura at the top of this page is an independently implemented website illustration — it does not contain the original Minecraft shader or its rendering pipeline.</p><div class="vfx-tags"><span>PIXEL FLAMES</span><span>LAYERED COLOR</span><span>VISUAL ITERATION</span></div></div></div>
+
+    <!-- Contact Direct -->
+    <section class="contact-panel" id="contact">
+      <h2 class="contact-title">DÉMARRER UN PROJET OU POSER UNE QUESTION</h2>
+
+      <div class="placeholder-box" style="max-width: 580px; margin: 0 auto 24px;">
+        <span class="placeholder-tag">[TEXTE À ÉCRIRE - APPEL AU CONTACT]</span>
+        <p class="contact-subtitle" style="margin-bottom: 0;">
+          <em>(Placeholder)</em> : Indique ici comment tu souhaites que les gens te contactent (par exemple : en t'envoyant un message direct sur Discord avec un lien vers leur repo ou une description de leur problème).
+        </p>
+      </div>
+
+      <div class="contact-buttons">
+        <button class="btn-voxel btn-voxel-primary" onclick="copyDiscord()">
+          COPIER MON DISCORD (mcadiie)
+        </button>
+
+        <a class="btn-voxel btn-voxel-ghost" href="https://github.com/MrGblizz" target="_blank" rel="noopener noreferrer">
+          PROFIL GITHUB ↗
+        </a>
+      </div>
     </section>
-    <section class="section shell" id="services" aria-labelledby="services-title">
-      <div class="section-heading slim"><div><span class="section-id">03 / WHAT I CAN HELP WITH</span><h2 id="services-title">PICK A <span class="aqua">QUEST<span class="pixel-dot">.</span></span></h2></div></div>
-      <div class="service-grid"><article class="service-card"><div class="service-top"><span>QUEST_01</span><span class="diamond-sm">✦</span></div><h3>MINECRAFT<br>FEATURES</h3><p>Small Fabric mechanics, gameplay prototypes and focused bug diagnosis. Well-scoped tasks, not promises of complete large mods.</p><span class="service-bottom">JAVA / FABRIC <span>↗</span></span></article><article class="service-card"><div class="service-top"><span>QUEST_02</span><span class="diamond-sm">✳</span></div><h3>PROCEDURAL<br>EXPERIMENTS</h3><p>Gameplay effects, lightweight visual prototypes and practical Python automations for specific workflows.</p><span class="service-bottom">VFX / PYTHON <span>↗</span></span></article><article class="service-card"><div class="service-top"><span>QUEST_03</span><span class="diamond-sm">▶</span></div><h3>GAMEPLAY<br>VIDEO EDITS</h3><p>Short teasers, mod demonstrations and dynamic edits. A fresh editing showreel is being prepared; no client credits claimed.</p><span class="service-bottom">VIDEO / PREMIERE PRO <span>↗</span></span></article></div>
-    </section>
-    <section class="section shell" id="process" aria-labelledby="process-title"><div class="process-box pixel-frame"><div><span class="section-id">04 / WORKFLOW</span><h2 id="process-title">SMALL SCOPE.<br><span class="aqua">CLEAR OUTPUT.</span></h2></div><div class="process-steps"><div><span>01</span><p>Send a short brief</p></div><div><span>02</span><p>Agree on a specific deliverable</p></div><div><span>03</span><p>Prototype, test & review</p></div><div><span>04</span><p>Hand off the work</p></div></div></div></section>
-    <section class="section shell" id="contact" aria-labelledby="contact-title"><div class="contact-panel"><span class="section-id">05 / NEW QUEST AVAILABLE</span><h2 id="contact-title">LET'S BUILD<br><span class="aqua">SOMETHING.</span></h2><p>Have a small Minecraft feature, unusual effect or gameplay video in mind? Send a concise brief with your version, goal and deadline.</p><div class="hero-actions"><a class="block-button primary" href="https://github.com/MrGblizz" target="_blank" rel="noopener noreferrer">REACH ME ON GITHUB ↗</a><a class="block-button ghost" href="https://github.com/MrGblizz/Portfolio" target="_blank" rel="noopener noreferrer">VIEW THE REPOSITORY ↗</a></div><p class="small-disclaimer">Contact currently goes through the linked GitHub profile. A dedicated professional email is still to be added. Do not share private details in public issues.</p><div class="contact-pixels" aria-hidden="true"></div></div></section>
   </main>
-  <footer class="shell footer"><span>© 2026 M. CADIIE · PERSONAL PORTFOLIO</span><span>MADE FOR THE WEB, NOT WITH THE ORIGINAL MOD SHADER.</span><a href="#top">BACK TO SPAWN ↑</a></footer>
-<script>
-/* M. CadIIE portfolio: independent, decorative 2D pixel flame illustration.
-   It does NOT contain shaders, rendering passes, or algorithms from the Minecraft mod.
-   Browser-side code is inspectable; keep original game technology private. */
-(() => {
-  'use strict';
-  const canvas = document.getElementById('aura-canvas');
-  if (!canvas) return;
-  const view = canvas.getContext('2d', { alpha: true });
-  if (!view) return;
-  const cell = document.createElement('canvas');
-  const W = 184, H = 184;
-  cell.width = W; cell.height = H;
-  const c = cell.getContext('2d', { alpha: true });
-  const colors = [
-    { outer:'#11aa93', mid:'#00f1d2', bright:'#7bffff', core:'#f7fff1', dot:'#b1fbee' },
-    { outer:'#dc4b08', mid:'#ff970d', bright:'#ffe04d', core:'#fff8c5', dot:'#fff0a5' }
-  ];
-  const rand = n => {
-    const v = Math.sin(n * 127.17 + 13.71) * 43758.545;
-    return v - Math.floor(v);
-  };
-  const square = (x,y,w,h,color) => { c.fillStyle=color; c.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h)); };
-  const triangle = (points,color) => {
-    c.fillStyle=color;
-    c.beginPath();c.moveTo(Math.round(points[0][0]),Math.round(points[0][1]));
-    for(let i=1;i<points.length;i++) c.lineTo(Math.round(points[i][0]),Math.round(points[i][1]));
-    c.closePath();c.fill();
-  };
-  const drawAvatar = () => {
-    // Generic voxel figure: a website illustration, not an exported game asset.
-    square(74,62,38,40,'#101924');
-    square(77,64,32,34,'#9aadb9');
-    square(79,66,28,29,'#8b9baa');
-    square(81,69,24,25,'#394856');
-    square(85,77,5,4,'#c8e0ef'); square(98,77,5,4,'#c8e0ef');
-    square(80,97,26,7,'#101a23');
-    square(73,105,40,39,'#101822');
-    square(77,108,32,33,'#59749a');
-    square(81,111,24,31,'#3b5376');
-    square(74,112,8,29,'#1f2f4b'); square(104,112,8,29,'#718eb2');
-    square(63,109,12,39,'#192737');square(65,110,10,30,'#6c8da7');square(67,141,8,8,'#be9778');
-    square(112,109,12,39,'#18283c');square(112,110,9,30,'#69839e');square(113,141,8,8,'#be9778');
-    square(76,141,35,11,'#131e2f');square(78,149,13,26,'#162033');square(96,149,13,26,'#152238');
-    square(78,155,11,14,'#37465c');square(97,155,11,14,'#3b5064');
-    square(76,173,16,5,'#0c1321'); square(95,173,16,5,'#0c1321');
-    square(77,176,15,3,'#77869e'); square(95,176,16,3,'#77869e');
-  };
-  let palette = 0, paused = matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0, epoch=0, animationId=null;
-  const draw = (t) => {
-    const clr=colors[palette];c.clearRect(0,0,W,H);
-    // Moving silhouette bands, generated with small triangular tongues.
-    const pulse=Math.sin(t*1.8)*2;
-    const bands=[
-      {col:clr.outer,scale:1.0,alpha:.92},
-      {col:clr.mid,scale:.81,alpha:1},
-      {col:clr.bright,scale:.62,alpha:.94},
-      {col:clr.core,scale:.36,alpha:.9}
-    ];
-    bands.forEach((b,layer) => {
-      c.globalAlpha=b.alpha;
-      const left=69 - 21*b.scale, right=116 + 22*b.scale, top=74 - 30*b.scale, bottom=171;
-      triangle([[left+8,161],[left,117],[left+8,top+24],[82,top+2],[100,top],[right-7,top+24],[right,121],[right-6,166],[105,bottom],[80,bottom]],b.col);
-      // Layered, vertical flame tongues with variable tilt and angular bends.
-      const count=layer===0?31:layer===1?24:layer===2?16:8;
-      for(let i=0;i<count;i++) {
-        const p=i/(count-1), x=left+(right-left)*p;
-        const arch=Math.pow(Math.abs(p-.5)*2,1.1);
-        const side=arch>.65?1:0;
-        const baseY=top+18*arch+rand(i+layer*87)*21+34*(side&&i%3===0?1:0);
-        const h=(12+28*rand(i*7+layer*23)+pulse)*(layer===0?1:.75);
-        const shift=(rand(i*11+layer*15)-.5)*12 + Math.sin(t*1.5+i*1.9+layer)*3;
-        const wid=(2+rand(i*19+layer*17)*5)*b.scale+.5;
-        triangle([[x-wid,baseY+13],[x-2,baseY-7],[x+shift,baseY-h],[x+wid*.6,baseY-8],[x+wid,baseY+13]],b.col);
-      }
-      // Side tongues extend from the arms downwards; much less serpentine than waviness.
-      for(let side of [-1,1])for(let j=0;j<7-layer;j++){
-        const yy=104+j*8;
-        const sx=92+side*(25+17*b.scale),tipX=sx+side*(6+14*rand(j*7+layer));
-        const dx=Math.sin(t*2+j+layer)*2;
-        triangle([[sx,yy-7],[tipX+dx,yy-11-rand(j*3+layer)*18],[sx-side*4,yy+9]],b.col);
+
+  <!-- Footer -->
+  <footer class="container">
+    <span>© 2026 M. CadIIE · Portfolio Technique</span>
+    <span>DISCORD : mcadiie · MINECRAFT FABRIC SYSTEMS</span>
+  </footer>
+
+  <div id="toast" class="toast">DISCORD COPIÉ : mcadiie</div>
+
+  <script>
+    // Détection de la présence de la vidéo
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('main-video');
+      const placeholder = document.getElementById('video-placeholder');
+
+      if (video && placeholder) {
+        const hidePlaceholder = () => { placeholder.style.display = 'none'; };
+        if (video.readyState >= 1) hidePlaceholder();
+        video.addEventListener('loadedmetadata', hidePlaceholder);
+        video.addEventListener('loadeddata', hidePlaceholder);
+        video.addEventListener('canplay', hidePlaceholder);
+        video.addEventListener('play', hidePlaceholder);
+        video.addEventListener('error', () => {
+          placeholder.style.display = 'flex';
+        });
       }
     });
-    c.globalAlpha=1;
-    for(let i=0;i<23;i++) {
-      const x=27+rand(i*13)*135,yy=(16+rand(i*31)*155-t*(10+rand(i*3)*10))%184;
-      const y=(yy+184)%184,dx=x-92;
-      if(Math.abs(dx)<30 && y>60 && y<180)continue;
-      const alpha=.25+.65*Math.abs(Math.sin(t*1.5+i));
-      c.globalAlpha=alpha;square(x+Math.sin(t+i)*2,y,1+Math.floor(rand(i*21)*2),2,clr.dot);
-    }
-    c.globalAlpha=1;
-    // The figure is always in front of the decorative flame geometry.
-    drawAvatar();
-    view.clearRect(0,0,canvas.width,canvas.height);
-    view.imageSmoothingEnabled=false;
-    view.drawImage(cell,0,0,canvas.width,canvas.height);
-  };
-  const tick=stamp=>{if(paused)return;const delta=last?Math.min((stamp-last)/1000,.06):.016;last=stamp;epoch+=delta;draw(epoch);animationId=requestAnimationFrame(tick);};
-  const start=()=>{last=0;if(!paused)animationId=requestAnimationFrame(tick);};
-  const paletteButton=document.getElementById('palette-switch');
-  const pauseButton=document.getElementById('motion-switch');
-  paletteButton?.addEventListener('click',()=>{palette=1-palette;draw(epoch);});
-  pauseButton?.addEventListener('click',()=>{
-    paused=!paused;
-    pauseButton.textContent=paused?'▶':'Ⅱ';
-    pauseButton.setAttribute('aria-label',paused?'Play aura animation':'Pause aura animation');
-    if(!paused)start();else if(animationId)cancelAnimationFrame(animationId);
-  });
-  if(paused&&pauseButton){pauseButton.textContent='▶';pauseButton.setAttribute('aria-label','Play aura animation');}
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){if(animationId)cancelAnimationFrame(animationId);} else if(!paused) start();});
-  draw(0);start();
-})();
 
-</script>
+    // Six démonstrations manga et quatre outils de création en jeu.
+    const carouselData = [
+      { src: 'screens/01_minato_rasengan.png', caption: '<strong style="color: var(--amber);">[Combo Téléportation &amp; Orbe (8 blocs)]</strong> Kunai lancé ➔ téléportation sur projectile en plein vol ➔ charge 0.5s ➔ Orbe d\'impact au contact.' },
+      { src: 'screens/02_gojo_territoire.png', caption: '<strong style="color: #60a5fa;">[Gojo — Territoire]</strong> Déploiement d\'une zone d\'effet autour du joueur : contrôle de l\'espace, effets visuels et logique de portée.' },
+      { src: 'screens/03_hisoka_bungeegum.png', caption: '<strong style="color: #ec4899;">[Hisoka — Bungee Gum]</strong> Aura élastique utilisée pour relier des cibles et construire des interactions de traction.' },
+      { src: 'screens/03_kurapika_serment.png', caption: '<strong style="color: #c084fc;">[Kurapika — Serment]</strong> Pouvoir encadré par des restrictions programmées : conditions d\'activation et conséquences en cas de rupture.' },
+      { src: 'screens/04_killua_foudre.png', caption: '<strong style="color: #38bdf8;">[Killua — Foudre]</strong> Aura électrique, effets de particules et capacités de déplacement rapide.' },
+      { src: 'screens/04_luffy_gear2.png', caption: '<strong style="color: #ea580c;">[Luffy — Surcharge corporelle &amp; Multi-Buff]</strong> Sacrifice de points de vie pour multi-buffs (vitesse +4, attaque +3) et superposition de shaders d\'aura.' },
+      { src: 'screens/03_editeur_voxel.png', caption: '<strong style="color: #38bdf8;">[Éditeur Voxel 3D en jeu]</strong> Modélisation de créatures couche par couche (276 voxels) avec prévisualisation 3D et palettes d\'aura.' },
+      { src: 'screens/04_espace_poche.png', caption: '<strong style="color: #f472b6;">[Architecte de Dimension de Poche]</strong> Plan 2D au sol : création de pièces (8x9x4), choix des matériaux, portes et instanciation de monde.' },
+      { src: 'screens/05_logique_poche_sbire.png', caption: '<strong style="color: #a78bfa;">[Logique Avancée &amp; Événements]</strong> Conditions Si/Alors/Sinon, gestion de variables d\'état et bus de messages vers les créatures.' },
+      { src: 'screens/05_serment_mortel.png', caption: '<strong style="color: #c084fc;">[Serment de Riposte &amp; Sanction]</strong> Contrainte stricte (riposte obligatoire) avec sanction mortelle immédiate si le serment est enfreint.' }
+    ];
+
+    let currentSlide = 0;
+    document.getElementById('carousel-total').textContent = carouselData.length;
+
+    function updateCarousel() {
+      const img = document.getElementById('carousel-img');
+      const caption = document.getElementById('carousel-caption');
+      const counter = document.getElementById('carousel-counter');
+      if (!img || !caption || !counter) return;
+
+      img.style.opacity = '0.2';
+      setTimeout(() => {
+         img.src = carouselData[currentSlide].src;
+         caption.innerHTML = carouselData[currentSlide].caption;
+         img.alt = caption.textContent.trim();
+        counter.textContent = currentSlide + 1;
+        img.style.opacity = '1';
+      }, 150);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % carouselData.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + carouselData.length) % carouselData.length;
+      updateCarousel();
+    }
+
+    // Gestion des onglets d'exemples de Visual Scripting
+    function showExample(type) {
+      const views = document.querySelectorAll('.example-view');
+      views.forEach(v => v.style.display = 'none');
+
+      const tabs = ['minato', 'serment', 'territoire', 'gear'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-ex-' + t);
+        if (btn) {
+          if (t === type) {
+            btn.style.background = 'var(--orange)';
+            btn.style.color = '#0c0a09';
+            btn.style.borderColor = 'var(--amber)';
+          } else {
+            btn.style.background = 'var(--panel)';
+            btn.style.color = 'var(--text)';
+            btn.style.borderColor = 'var(--border)';
+          }
+        }
+      });
+
+      const activeView = document.getElementById('ex-' + type);
+      if (activeView) activeView.style.display = 'block';
+    }
+
+    // Copie Discord
+    function copyDiscord() {
+      navigator.clipboard.writeText('mcadiie').then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = "DISCORD COPIÉ DANS LE PRESSE-PAPIER : mcadiie";
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }).catch(() => {
+        alert("Discord : mcadiie");
+      });
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+# Publier uniquement les fichiers nécessaires au site ; conserver les autres localement.
+*
+!/.gitignore
+!/index.html
+!/avatar.jpg
+!/demo-categorie-corps.mp4
+!/screens/
+!/screens/01_gojo_infini.png
+!/screens/01_minato_rasengan.png
+!/screens/02_gojo_territoire.png
+!/screens/02_minato_hiraishin.png
+!/screens/03_editeur_voxel.png
+!/screens/03_hisoka_bungeegum.png
+!/screens/03_kurapika_serment.png
+!/screens/04_espace_poche.png
+!/screens/04_killua_foudre.png
+!/screens/04_luffy_gear2.png
+!/screens/05_logique_poche_sbire.png
+!/screens/05_luffy_gatling.png
+!/screens/05_serment_mortel.png
+!/screens/06_kurapika_empereur.png
