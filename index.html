@@ -217,26 +217,6 @@
       text-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
     }
 
-    .placeholder-box {
-      border: 1px dashed var(--amber);
-      background: rgba(245, 158, 11, 0.04);
-      padding: 16px 20px;
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .placeholder-tag {
-      position: absolute;
-      top: -10px;
-      left: 14px;
-      background: var(--bg);
-      padding: 0 8px;
-      font-family: var(--font-pixel);
-      font-size: 9px;
-      color: var(--amber);
-      text-transform: uppercase;
-    }
-
     .hero-bio {
       font-size: 15.5px;
       color: var(--text-muted);
@@ -639,8 +619,9 @@
 
     .offer-title {
       font-family: var(--font-sans);
-      font-size: 19px;
+      font-size: clamp(23px, 2.2vw, 28px);
       font-weight: 700;
+      line-height: 1.25;
       color: #fff;
       margin-bottom: 12px;
     }
@@ -723,8 +704,11 @@
       gap: 16px;
     }
 
-    #open-brief {
-      margin-bottom: 24px;
+    .contact-buttons .btn-voxel {
+      justify-content: center;
+      text-align: center;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
 
     #contact,
@@ -733,97 +717,9 @@
       scroll-margin-top: 90px;
     }
 
-    .brief-form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin: 24px auto;
-      max-width: 680px;
-      text-align: left;
-    }
-
-    .contact-panel [hidden] {
-      display: none;
-    }
-
-    .brief-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text);
-      min-width: 0;
-    }
-
-    .brief-field-wide {
-      grid-column: 1 / -1;
-    }
-
-    .brief-field input,
-    .brief-field select,
-    .brief-field textarea {
-      width: 100%;
-      min-width: 0;
-      padding: 10px 12px;
-      background: var(--bg);
-      color: var(--text);
-      border: 2px solid var(--border);
-      border-radius: 0;
-      font: 13px var(--font-mono);
-    }
-
-    .brief-field textarea {
-      min-height: 85px;
-      resize: vertical;
-    }
-
-    .brief-field input:focus,
-    .brief-field select:focus,
-    .brief-field textarea:focus {
-      outline: 2px solid var(--amber);
-      outline-offset: 2px;
-    }
-
-    .brief-help {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin: 0 auto 16px;
-      max-width: 680px;
-    }
-
-    .brief-fallback {
-      max-width: 680px;
-      margin: 0 auto 18px;
-      text-align: left;
-    }
-
-    .brief-fallback textarea {
-      width: 100%;
-      min-height: 190px;
-      padding: 10px 12px;
-      color: var(--text);
-      background: var(--bg);
-      border: 2px solid var(--amber);
-      font: 12px var(--font-mono);
-    }
-
-    .honeypot {
-      position: absolute;
-      left: -10000px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-
-    #brief-submit:disabled {
-      opacity: 0.6;
-      cursor: wait;
-    }
-
     @media (max-width: 600px) {
-      .brief-form {
-        grid-template-columns: 1fr;
+      .contact-buttons .btn-voxel {
+        width: 100%;
       }
     }
 
@@ -889,29 +785,28 @@
         <!-- Photo de profil -->
         <div class="photo-wrapper">
           <div class="photo-frame">
-            <img src="avatar.jpg" alt="Photo de profil Mathéo — M. CadIIE" id="profile-img">
+            <img src="avatar.jpg?v=20261118" alt="Photo de profil Mathéo — M. CadIIE" id="profile-img">
           </div>
           <div class="photo-badge">M. CadIIE // DEV FABRIC</div>
         </div>
 
-        <!-- Accroche & Bio avec Placeholder -->
+        <!-- Accroche & Bio -->
         <div>
-          <span class="hero-kicker">&gt; IDENTITÉ &amp; SPÉCIALITÉ</span>
+          <span class="hero-kicker">&gt; IDENTITÉ &amp; SPÉCIALITÉ · TARIFS DE LANCEMENT</span>
           <h1 class="hero-title">
-            Développeur <span class="glow">Minecraft Fabric</span> &amp;<br>
-            Architecture de Systèmes Java.
+            Développeur <span class="glow">Minecraft Fabric</span> — Mécaniques de gameplay &amp; systèmes Java sur mesure.
           </h1>
 
-          <!-- Bio Personnelle -->
+          <!-- Bio personnelle -->
           <div class="bio-card" style="background: var(--panel); border: 2px solid var(--border); box-shadow: 6px 6px 0px #000; padding: 22px; margin-bottom: 24px;">
             <p class="hero-bio">
-              Je suis étudiant en deuxième année à l'<strong>École Nationale Supérieure d'Informatique pour l'Industrie et l'Entreprise</strong> (ENSIIE, France). L'expertise que j'y acquiers est le <strong>calcul haute performance (HPC)</strong>.
+              Je développe des fonctionnalités Fabric ciblées : mécaniques de gameplay, interactions personnalisées et systèmes Java structurés pour votre projet. Chaque prestation est cadrée par écrit avec des objectifs précis, des tests documentés et des livrables convenus avant le développement.
             </p>
             <p class="hero-bio" style="margin-top: 12px;">
-              Cette expertise est couplée à un esprit créatif qui ne se contente pas du « déjà-vu ». Mon bagage scientifique me permet de concevoir du code hautement performant ainsi que d'effectuer des recherches sur des méthodes algorithmiques innovantes pour créer de nouvelles expériences de jeu.
+              Étudiant ingénieur en deuxième année à l'ENSIIE (spécialisation calcul haute performance — HPC), j'applique une approche rigoureuse de la programmation Java et de l'organisation du code pour concevoir des fonctionnalités maintenables et attentives aux performances.
             </p>
             <p class="hero-bio" style="margin-top: 12px;">
-              Je développe moi-même un projet de mod Minecraft inspiré du système de pouvoirs de <em>Hunter × Hunter</em>, alliant recherches en VFX et en mécanique des fluides pour proposer des effets procéduraux uniques. J'apporte ainsi une vision artistique en plus d'une expertise technique en HPC, couplée à une capacité de recherche scientifique pour créer des expériences de jeu uniques pour vos projets.
+              Mon projet personnel <code>aura_mod</code> (moteur de pouvoirs programmables) me permet d'expérimenter les interfaces en jeu, les règles de sorts et les effets procéduraux. Pour mes premières missions clients, je privilégie des interventions bien délimitées que je peux tester et livrer sérieusement.
             </p>
           </div>
 
@@ -1019,18 +914,18 @@
           </div>
         </div>
 
-        <!-- Fiche descriptive du projet (avec Placeholder de texte) -->
+        <!-- Fiche descriptive du projet personnel -->
         <div class="project-card">
           <div class="project-tags">
             <span class="tag-voxel">FABRIC API</span>
             <span class="tag-voxel">JAVA 21</span>
-            <span class="tag-voxel">MIXINS PROPRES</span>
+            <span class="tag-voxel">RENDU PROCÉDURAL</span>
           </div>
 
           <!-- Détails techniques du moteur (walkthrough de la démo) -->
           <div class="project-details-content" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px;">
             <p style="margin-bottom: 12px; color: var(--text);">
-              <strong>Ce que montre la démo :</strong> À la création du monde, le joueur choisit une spécialité (ici <em>« Corps »</em>, renforçant les aptitudes physiques et ses affinités). L'aura est une flamme pixelisée conçue pour l'esthétique Minecraft, épousant en temps réel la morphologie et la dynamique des mouvements de l'entité (ici en teinte bleue).
+              <strong>Projet personnel en développement :</strong> <code>aura_mod</code> explore la création de capacités programmables, les interfaces de configuration en jeu et les effets visuels procéduraux sous Fabric. Ce projet illustre mon approche technique et créative sur des mécaniques complexes (il ne s'agit pas d'une commande client). À la création du monde, le joueur choisit une spécialité (ici <em>« Corps »</em>) et génère une aura pixelisée dynamique adaptée à ses mouvements.
             </p>
 
             <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); padding: 14px; margin-bottom: 14px;">
@@ -1049,8 +944,7 @@
           </div>
 
           <ul class="project-specs">
-            <li><span>[+]</span> <strong>Isolation :</strong> Code modulaire évitant les conflits d'injection Mixin.</li>
-            <li><span>[+]</span> <strong>Livrable :</strong> Modalités adaptées au projet et définies au devis.</li>
+            <li><span>[+]</span> <strong>Architecture :</strong> Code structuré autour d'un éditeur de sorts en jeu et d'un rendu procédural modulaire.</li>
           </ul>
 
           <a href="#contact" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center; margin-top: auto;">
@@ -1069,25 +963,25 @@
       </div>
 
       <div class="offers-grid">
-        <!-- Offre 1 : audit de performances -->
+        <!-- Offre A-01 : diagnostic technique -->
         <div class="offer-box">
           <div>
             <div class="offer-header">
-              <span class="offer-badge">AUDIT DE PERFORMANCES FABRIC</span>
-              <span class="offer-price">À PARTIR DE 35 €</span>
+              <span class="offer-badge">DIAGNOSTIC TECHNIQUE FABRIC</span>
+              <span class="offer-price">DÈS 35 € (LANCEMENT)</span>
             </div>
-            <h3 class="offer-title">Audit &amp; diagnostic de performances</h3>
+            <h3 class="offer-title">Audit &amp; diagnostic ciblé</h3>
             <p class="offer-desc">
-              Pour un mod Minecraft Fabric dont les performances posent question : diagnostic d'un ralentissement précis, analyse d'une partie identifiée ou audit plus approfondi, selon le devis. Accès autorisé au code source nécessaire avant l'audit ; aucune correction ni amélioration n'est garantie.
+              Un ralentissement, une consommation mémoire inhabituelle ou un comportement technique difficile à isoler ? Je réalise une analyse ciblée sur un périmètre défini ensemble (accès au code ou aux éléments requis). La mise en œuvre des correctifs n'est pas incluse par défaut et fait l'objet d'un devis séparé si nécessaire.
             </p>
             <ul class="offer-list">
-              <li>Rapport documenté : démarche, observations et limites</li>
-              <li>Pistes d'optimisation ou de diagnostic selon le périmètre retenu</li>
-              <li>Correction ou amélioration non incluse par défaut</li>
+              <li>Compte rendu écrit : démarche, observations et limites constatées</li>
+              <li>Pistes de diagnostic ou recommandations selon les résultats</li>
+              <li>Périmètre et conditions validés par devis avant intervention</li>
             </ul>
           </div>
           <a href="brief-a01.html" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;">
-            DEMANDER UN DEVIS D'AUDIT
+            DEMANDER UN DIAGNOSTIC ↗
           </a>
         </div>
 
@@ -1095,21 +989,21 @@
         <div class="offer-box">
           <div>
             <div class="offer-header">
-              <span class="offer-badge">MÉCANIQUE DE GAMEPLAY FABRIC</span>
-              <span class="offer-price">À PARTIR DE 75 €</span>
+              <span class="offer-badge">GAMEPLAY &amp; SYSTÈMES FABRIC</span>
+              <span class="offer-price">DÈS 75 € (LANCEMENT)</span>
             </div>
             <h3 class="offer-title">Mécanique de gameplay Fabric</h3>
             <p class="offer-desc">
-              Une fonctionnalité jouable avec un objectif principal : règles et critères de réussite définis ensemble, sur une version de Minecraft/Fabric convenue. Petit mod autonome par défaut ; intégration dans un mod existant après examen et devis.
+              Une fonctionnalité jouable au périmètre maîtrisé : objectif, comportement et critères de réussite fixés avant le développement. Petit mod autonome par défaut (intégration dans un mod existant après examen technique). Le tarif d'appel couvre les mécaniques simples ; les demandes plus riches sont chiffrées sur devis.
             </p>
             <ul class="offer-list">
-              <li>Périmètre et comportement attendus cadrés par écrit</li>
-              <li>Livrables définis au devis : mod, sources et notice selon le projet</li>
-              <li>Tests fonctionnels documentés sur l'environnement convenu</li>
+              <li>Cahier des charges court et critères de validation écrits</li>
+              <li>Livrables définis au devis : fichier .jar, sources et notice</li>
+              <li>Tests fonctionnels documentés sur la version convenue</li>
             </ul>
           </div>
           <a href="brief-b01.html" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;">
-            DEMANDER UN DEVIS DE MÉCANIQUE
+            DÉCRIRE MA MÉCANIQUE ↗
           </a>
         </div>
       </div>
@@ -1117,12 +1011,12 @@
       <!-- Processus de travail sécurisé -->
       <div class="process-bar">
         <div class="process-col">
-          <h5>01. DÉCRIRE LE BESOIN</h5>
-          <p>Copiez le brief ci-dessous et envoyez-le sur Discord, sans partager de secret.</p>
+          <h5>01. QUALIFIER LE BESOIN</h5>
+          <p>Remplissez le questionnaire dédié à l'offre (A-01 ou B-01) sans partager de secret ni de code confidentiel.</p>
         </div>
         <div class="process-col">
-          <h5>02. PREMIER RETOUR</h5>
-          <p>Première réponse sous 48 heures : accusé de réception, question ou avis préliminaire.</p>
+          <h5>02. PREMIER RETOUR (48H)</h5>
+          <p>Accusé de réception, questions de cadrage ou avis préliminaire sur la faisabilité.</p>
         </div>
         <div class="process-col">
           <h5>03. DEVIS APRÈS CADRAGE</h5>
@@ -1130,7 +1024,7 @@
         </div>
         <div class="process-col">
           <h5>04. ACCORD ÉCRIT</h5>
-          <p>Réalisation après validation écrite du devis ; changement de périmètre soumis à votre accord.</p>
+          <p>Démarrage après validation écrite du devis ; tout ajout de périmètre fait l'objet d'un avenant.</p>
         </div>
       </div>
 
@@ -1139,58 +1033,12 @@
 
     <!-- Contact Direct -->
     <section class="contact-panel" id="contact">
-      <h2 class="contact-title">DÉCRIRE MON BESOIN</h2>
-      <p class="contact-subtitle">Décrivez un problème ou une fonctionnalité pour demander un devis. Une première réponse arrive sous 48 heures ; le devis et le délai de réalisation sont fixés après examen.</p>
-      <button id="open-brief" type="button" class="btn-voxel btn-voxel-primary" onclick="openBrief()">DÉCRIRE MON BESOIN</button>
-
-      <form id="brief-form" class="brief-form" onsubmit="submitBrief(event)" hidden>
-        <button type="button" class="btn-voxel btn-voxel-ghost brief-field-wide" style="justify-content: center;" onclick="closeBrief()">FERMER LE BRIEF</button>
-        <label class="brief-field" for="brief-offer">Type de demande
-          <select id="brief-offer" name="offre" required>
-            <option value="Autre demande (devis personnalisé)">Autre demande (devis personnalisé)</option>
-          </select>
-        </label>
-        <label class="brief-field" for="brief-version">Version Minecraft/Fabric
-          <input id="brief-version" name="version" type="text" placeholder="Ex. 1.21.1 ou Je ne sais pas" required>
-        </label>
-        <label class="brief-field brief-field-wide" for="brief-goal">Que voulez-vous obtenir ou résoudre ?
-          <textarea id="brief-goal" name="objectif" placeholder="Quand je fais X, il se passe Y…" required></textarea>
-        </label>
-        <label class="brief-field" for="brief-context">Contexte du projet
-          <select id="brief-context" name="contexte" required>
-            <option value="Je ne sais pas">Je ne sais pas</option>
-            <option value="Solo">Solo</option>
-            <option value="Serveur">Serveur</option>
-            <option value="Solo et serveur">Solo et serveur</option>
-          </select>
-        </label>
-        <label class="brief-field" for="brief-discord">Votre pseudo Discord (ou email si l'envoi est activé)
-          <input id="brief-discord" name="discord" type="text" autocomplete="off" placeholder="Votre pseudo (pas votre mot de passe)" required>
-        </label>
-        <label id="brief-email-field" class="brief-field brief-field-wide" for="brief-email" hidden>Email de réponse (facultatif si pseudo Discord)
-          <input id="brief-email" name="email" type="email" autocomplete="email" placeholder="Pour recevoir une réponse par email">
-        </label>
-        <label class="brief-field brief-field-wide" for="brief-result">Comment saurez-vous que le travail est réussi ?
-          <textarea id="brief-result" name="resultat" placeholder="Une phrase suffit." required></textarea>
-        </label>
-        <label class="brief-field brief-field-wide" for="brief-links">Liens et informations utiles (facultatif)
-          <textarea id="brief-links" name="liens" placeholder="Dépôt autorisé, logs d'audit via un lien, captures… Aucun mot de passe ni jeton."></textarea>
-        </label>
-        <label class="honeypot" aria-hidden="true">Laissez ce champ vide
-          <input name="_gotcha" type="text" tabindex="-1" autocomplete="off">
-        </label>
-        <button id="brief-submit" type="submit" class="btn-voxel btn-voxel-primary brief-field-wide" style="justify-content: center;">COPIER LE BRIEF POUR DISCORD</button>
-        <button id="brief-copy" type="button" class="btn-voxel btn-voxel-ghost brief-field-wide" style="justify-content: center;" onclick="copyBriefForDiscord()" hidden>COPIER POUR DISCORD</button>
-      </form>
-      <p id="brief-help" class="brief-help" hidden>Copiez ce brief et envoyez-le à <strong>mcadiie</strong> sur Discord. Copier le texte ne l'envoie pas automatiquement. Ne partagez aucun secret.</p>
-      <p id="email-privacy" class="brief-help" hidden>Les informations soumises servent à répondre à votre demande de devis et transitent par Formspree. Mentions de confidentialité à vérifier avant activation publique.</p>
-      <p id="brief-status" class="brief-help" role="status" aria-live="polite" hidden></p>
-      <div id="brief-fallback" class="brief-fallback" hidden>
-        <label for="brief-message">Copie automatique indisponible : sélectionnez et copiez ce message manuellement.</label>
-        <textarea id="brief-message" readonly></textarea>
-      </div>
-
+      <span class="section-kicker">&gt; 03 // DÉMARRER UN ÉCHANGE</span>
+      <h2 class="contact-title">CHOISIR VOTRE QUESTIONNAIRE</h2>
+      <p class="contact-subtitle">Toutes les demandes de prestation passent par l'un des deux questionnaires de cadrage ci-dessous afin de vous répondre efficacement sous 48 h. Pour une question rapide avant de remplir un brief, vous pouvez également me contacter directement sur Discord (<strong>mcadiie</strong>).</p>
       <div class="contact-buttons">
+        <a class="btn-voxel btn-voxel-primary" href="brief-a01.html">QUESTIONNAIRE A-01 · AUDIT (DÈS 35 €) ↗</a>
+        <a class="btn-voxel btn-voxel-ghost" href="brief-b01.html">QUESTIONNAIRE B-01 · MÉCANIQUE (DÈS 75 €) ↗</a>
         <button type="button" class="btn-voxel btn-voxel-ghost" onclick="copyDiscord()">
           COPIER MON DISCORD (mcadiie)
         </button>
@@ -1211,9 +1059,6 @@
   <div id="toast" class="toast" role="status" aria-live="polite">DISCORD COPIÉ : mcadiie</div>
 
   <script>
-    // Endpoint PUBLIC Formspree : laisser vide tant que la réception n'a pas été testée.
-    let FORM_ENDPOINT = '';
-
     function toggleSpecialty(id) {
       const panel = document.getElementById('specialty-' + id);
       const button = document.querySelector('.specialty-button[aria-controls="specialty-' + id + '"]');
@@ -1226,7 +1071,6 @@
 
     // Détection de la présence de la vidéo
     document.addEventListener('DOMContentLoaded', () => {
-      setupContactForm();
       const video = document.getElementById('main-video');
       const placeholder = document.getElementById('video-placeholder');
 
@@ -1311,148 +1155,11 @@
       if (activeView) activeView.style.display = 'block';
     }
 
-    function openBrief() {
-      document.getElementById('brief-form').hidden = false;
-      document.getElementById('brief-help').hidden = false;
-      document.getElementById('open-brief').hidden = true;
-      document.getElementById('brief-offer').value = 'Autre demande (devis personnalisé)';
-      document.getElementById('brief-offer').focus();
-    }
-
-    function closeBrief() {
-      document.getElementById('brief-form').hidden = true;
-      document.getElementById('brief-help').hidden = true;
-      document.getElementById('brief-fallback').hidden = true;
-      const opener = document.getElementById('open-brief');
-      opener.hidden = false;
-      opener.focus();
-    }
-
     function showToast(message) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2500);
-    }
-
-    function formEndpoint() {
-      if (!FORM_ENDPOINT.trim()) return null;
-      try {
-        const url = new URL(FORM_ENDPOINT);
-        if (url.origin === 'https://formspree.io' && !url.username && !url.password && !url.search && !url.hash
-          && /^\/f\/[a-zA-Z0-9_-]+$/.test(url.pathname)) {
-          return url.href;
-        }
-      } catch { /* Une configuration incorrecte reste en mode copie Discord. */ }
-      return null;
-    }
-
-    function setBriefStatus(text) {
-      const status = document.getElementById('brief-status');
-      status.textContent = text;
-      status.hidden = !text;
-    }
-
-    function setupContactForm() {
-      const emailEnabled = Boolean(formEndpoint());
-      const discord = document.getElementById('brief-discord');
-      discord.required = !emailEnabled;
-      discord.setCustomValidity('');
-      document.getElementById('brief-email-field').hidden = !emailEnabled;
-      document.getElementById('brief-email').disabled = !emailEnabled;
-      document.getElementById('brief-copy').hidden = !emailEnabled;
-      document.getElementById('email-privacy').hidden = !emailEnabled;
-      document.getElementById('brief-submit').textContent = emailEnabled ? 'ENVOYER LA DEMANDE' : 'COPIER LE BRIEF POUR DISCORD';
-      document.getElementById('brief-help').innerHTML = emailEnabled
-        ? 'Seul le bouton « Envoyer la demande » transmet vos informations à Formspree. Vous pouvez aussi copier le brief pour Discord <strong>mcadiie</strong>. Ne partagez aucun secret.'
-        : 'Copiez ce brief et envoyez-le à <strong>mcadiie</strong> sur Discord. Copier le texte ne l’envoie pas automatiquement. Ne partagez aucun secret.';
-      if (FORM_ENDPOINT.trim() && !emailEnabled) setBriefStatus('Endpoint Formspree invalide : seul le mode copie Discord est disponible.');
-      document.getElementById('brief-form').addEventListener('input', () => {
-        discord.setCustomValidity('');
-        setBriefStatus('');
-      });
-    }
-
-    function validateBrief() {
-      const form = document.getElementById('brief-form');
-      const discord = document.getElementById('brief-discord');
-      discord.setCustomValidity('');
-      if (formEndpoint() && !discord.value.trim() && !document.getElementById('brief-email').value.trim()) {
-        discord.setCustomValidity('Indiquez un pseudo Discord ou un email de réponse.');
-      }
-      return form.reportValidity();
-    }
-
-    function briefMessage() {
-      const field = id => document.getElementById(id).value.trim();
-      const message = [
-        'Bonjour, je souhaite demander un devis.',
-        'Offre : ' + field('brief-offer'),
-        'Objectif ou problème : ' + field('brief-goal'),
-        'Version Minecraft/Fabric : ' + field('brief-version'),
-        'Contexte (solo / serveur / inconnu) : ' + field('brief-context'),
-        'Résultat attendu : ' + field('brief-result'),
-        'Liens et informations utiles : ' + (field('brief-links') || 'Non précisés'),
-        'Mon pseudo Discord : ' + (field('brief-discord') || 'Non précisé')
-      ];
-      if (formEndpoint()) message.push('Email de réponse : ' + (field('brief-email') || 'Non précisé'));
-      return message.join('\n');
-    }
-
-    async function copyBriefForDiscord() {
-      if (!validateBrief()) return;
-      const message = briefMessage();
-      try {
-        await navigator.clipboard.writeText(message);
-        document.getElementById('brief-fallback').hidden = true;
-        showToast('BRIEF COPIÉ — À ENVOYER SUR DISCORD À mcadiie');
-      } catch {
-        const fallback = document.getElementById('brief-fallback');
-        const output = document.getElementById('brief-message');
-        output.value = message;
-        fallback.hidden = false;
-        output.focus();
-        output.select();
-      }
-    }
-
-    let sendingBrief = false;
-
-    async function submitBrief(event) {
-      event.preventDefault();
-      const endpoint = formEndpoint();
-      if (!endpoint) {
-        await copyBriefForDiscord();
-        return;
-      }
-      if (sendingBrief || !validateBrief()) return;
-      const form = document.getElementById('brief-form');
-      if (form.elements['_gotcha'].value) {
-        setBriefStatus('La demande n’a pas été transmise. Utilisez la copie pour Discord si nécessaire.');
-        return;
-      }
-      const button = document.getElementById('brief-submit');
-      sendingBrief = true;
-      button.disabled = true;
-      setBriefStatus('Envoi en cours…');
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-        const result = await response.json().catch(() => null);
-        if (!response.ok || result?.ok !== true) {
-          setBriefStatus('Demande non transmise : vérifiez les champs et réessayez, ou copiez le brief pour Discord.');
-          return;
-        }
-        setBriefStatus('Votre demande a été transmise.');
-      } catch {
-        setBriefStatus('Connexion indisponible : votre demande n’a pas été transmise. Utilisez la copie pour Discord.');
-      } finally {
-        button.disabled = false;
-        sendingBrief = false;
-      }
     }
 
     // Copie Discord
