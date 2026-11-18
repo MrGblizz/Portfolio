@@ -1069,26 +1069,26 @@
       </div>
 
       <div class="offers-grid">
-        <!-- Offre 1 : audit ciblé -->
+        <!-- Offre 1 : audit de performances -->
         <div class="offer-box">
           <div>
             <div class="offer-header">
-              <span class="offer-badge">AUDIT &amp; DIAGNOSTIC CIBLÉ</span>
+              <span class="offer-badge">AUDIT DE PERFORMANCES FABRIC</span>
               <span class="offer-price">À PARTIR DE 35 €</span>
             </div>
-            <h3 class="offer-title">Audit &amp; diagnostic ciblé</h3>
+            <h3 class="offer-title">Audit &amp; diagnostic de performances</h3>
             <p class="offer-desc">
-              Pour un problème Fabric précis : examen des logs et des éléments utiles, tentative de reproduction si possible, analyse de la cause probable et pistes de correction. Le diagnostic peut rester non concluant ; la correction du bug n'est pas garantie.
+              Pour un mod Minecraft Fabric dont les performances posent question : diagnostic d'un ralentissement précis, analyse d'une partie identifiée ou audit plus approfondi, selon le devis. Accès autorisé au code source nécessaire avant l'audit ; aucune correction ni amélioration n'est garantie.
             </p>
             <ul class="offer-list">
-              <li>Compte rendu court : démarche, observations et conclusion</li>
-              <li>Tests réalisés et limites documentés</li>
-              <li>Recommandations ; patch éventuel uniquement si prévu au devis</li>
+              <li>Rapport documenté : démarche, observations et limites</li>
+              <li>Pistes d'optimisation ou de diagnostic selon le périmètre retenu</li>
+              <li>Correction ou amélioration non incluse par défaut</li>
             </ul>
           </div>
-          <button type="button" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;" onclick="selectOffer('audit')">
+          <a href="brief-a01.html" class="btn-voxel btn-voxel-ghost" style="width: 100%; justify-content: center;">
             DEMANDER UN DEVIS D'AUDIT
-          </button>
+          </a>
         </div>
 
         <!-- Offre 2 : mécanique ciblée -->
@@ -1147,7 +1147,6 @@
         <button type="button" class="btn-voxel btn-voxel-ghost brief-field-wide" style="justify-content: center;" onclick="closeBrief()">FERMER LE BRIEF</button>
         <label class="brief-field" for="brief-offer">Type de demande
           <select id="brief-offer" name="offre" required>
-            <option value="Audit &amp; diagnostic ciblé">Audit &amp; diagnostic ciblé</option>
             <option value="Autre demande (devis personnalisé)">Autre demande (devis personnalisé)</option>
           </select>
         </label>
@@ -1327,15 +1326,6 @@
       const opener = document.getElementById('open-brief');
       opener.hidden = false;
       opener.focus();
-    }
-
-    function selectOffer(type) {
-      openBrief();
-      const offer = document.getElementById('brief-offer');
-      offer.value = type === 'audit' ? 'Audit & diagnostic ciblé' : 'Autre demande (devis personnalisé)';
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-      history.replaceState(null, '', '#contact');
-      document.getElementById('brief-goal').focus({ preventScroll: true });
     }
 
     function showToast(message) {
