@@ -51,6 +51,9 @@
     }
     .panel h2 { margin: 0 0 12px; font: 700 17px 'Silkscreen', monospace; }
     .panel p { margin: 0 0 14px; color: var(--muted); }
+    .privacy-note { max-width: 720px; color: var(--muted); }
+    .privacy-note a, footer a { color: var(--amber); text-underline-offset: 3px; }
+    .privacy-note a:hover, footer a:hover { color: var(--text); }
     .actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 22px; }
     .button {
       display: inline-flex; align-items: center; min-height: 46px; padding: 10px 16px;
@@ -63,6 +66,8 @@
     iframe { display: block; width: 100%; min-height: 200px; border: 0; }
     #tally-fallback[hidden], #tally-embed[hidden], #tally-unconfigured[hidden], #tally-error[hidden] { display: none; }
     footer { padding: 24px 0; color: var(--muted); border-top: 2px solid var(--border); font: 12px 'JetBrains Mono', monospace; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
     @media (max-width: 600px) {
       main { padding-top: 32px; }
       .panel { padding: 16px; }
@@ -84,6 +89,7 @@
     <h1>Audit &amp; diagnostic ciblé Fabric</h1>
     <p class="price">DÈS 35 € (LANCEMENT)</p>
     <p class="intro">Décrivez votre mod et le problème technique à examiner : ralentissement, consommation mémoire inhabituelle ou comportement difficile à isoler. L'audit de performances nécessite un accès autorisé au code source et aux éléments utiles. Le périmètre, le compte rendu écrit et le prix sont convenus par devis ; les correctifs ne sont pas inclus par défaut. Première réponse sous 48 heures, sans promesse de diagnostic dans ce délai ni de devis automatique.</p>
+    <p class="privacy-note">Les données de cette demande sont traitées pour étudier votre projet et établir un devis. <a href="politique-confidentialite.html">Consultez la politique de confidentialité</a>.</p>
 
     <section class="panel" aria-labelledby="questionnaire-title">
       <h2 id="questionnaire-title">Questionnaire A-01</h2>
@@ -102,7 +108,7 @@
       </div>
     </section>
   </main>
-  <footer><div class="container">© 2026 M. CadIIE · Contact Discord : mcadiie</div></footer>
+  <footer><div class="container"><span>© 2026 M. CadIIE · Contact Discord : mcadiie</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a></nav></div></footer>
   <script>
     // Lien public du formulaire A-01 publié dans Tally (Share → Copy link).
     const TALLY_FORM_URL = 'https://tally.so/r/Z9ORra';

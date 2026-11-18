@@ -51,6 +51,9 @@
     }
     .panel h2 { margin: 0 0 12px; font: 700 17px 'Silkscreen', monospace; }
     .panel p { margin: 0 0 14px; color: var(--muted); }
+    .privacy-note { max-width: 720px; color: var(--muted); }
+    .privacy-note a, footer a { color: var(--amber); text-underline-offset: 3px; }
+    .privacy-note a:hover, footer a:hover { color: var(--text); }
     .actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 22px; }
     .button {
       display: inline-flex; align-items: center; min-height: 46px; padding: 10px 16px;
@@ -63,6 +66,8 @@
     iframe { display: block; width: 100%; min-height: 200px; border: 0; }
     #tally-fallback[hidden], #tally-embed[hidden], #tally-unconfigured[hidden], #tally-error[hidden] { display: none; }
     footer { padding: 24px 0; color: var(--muted); border-top: 2px solid var(--border); font: 12px 'JetBrains Mono', monospace; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
     @media (max-width: 600px) {
       main { padding-top: 32px; }
       .panel { padding: 16px; }
@@ -84,6 +89,7 @@
     <h1>Mécanique de gameplay Minecraft Fabric</h1>
     <p class="price">DÈS 75 € (LANCEMENT)</p>
     <p class="intro">Décrivez une mécanique de gameplay Fabric ciblée : objectif, comportement et critères de réussite seront fixés avant le développement. Petit mod autonome par défaut ; toute intégration dans un mod existant demande un examen technique. Projets sur Minecraft 1.20.1 ou version ultérieure étudiés au cas par cas ; version, tests fonctionnels, livrables et prix seront convenus au devis. Le tarif d'appel concerne les mécaniques simples, sans devis automatique. Première réponse sous 48 heures, sans promesse de livraison dans ce délai.</p>
+    <p class="privacy-note">Les données de cette demande sont traitées pour étudier votre projet et établir un devis. <a href="politique-confidentialite.html">Consultez la politique de confidentialité</a>.</p>
 
     <section class="panel" aria-labelledby="questionnaire-title">
       <h2 id="questionnaire-title">Questionnaire B-01</h2>
@@ -102,7 +108,7 @@
       </div>
     </section>
   </main>
-  <footer><div class="container">© 2026 M. CadIIE · Contact Discord : mcadiie</div></footer>
+  <footer><div class="container"><span>© 2026 M. CadIIE · Contact Discord : mcadiie</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a></nav></div></footer>
   <script>
     // Lien public du formulaire B-01 publié dans Tally (Share → Copy link).
     let TALLY_FORM_URL = 'https://tally.so/r/2jAxyV';

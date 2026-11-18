@@ -756,6 +756,22 @@
       flex-wrap: wrap;
       gap: 12px;
     }
+
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer a {
+      color: var(--amber);
+      text-underline-offset: 3px;
+    }
+
+    footer a:hover,
+    footer a:focus-visible {
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
@@ -1053,6 +1069,10 @@
   <!-- Footer -->
   <footer class="container">
     <span>© 2026 M. CadIIE · Portfolio Technique</span>
+    <nav aria-label="Informations légales">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="politique-confidentialite.html">Confidentialité</a>
+    </nav>
     <span>DISCORD : mcadiie · MINECRAFT FABRIC SYSTEMS</span>
   </footer>
 
