@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brief B-01 — M. CadIIE</title>
+  <meta name="description" content="Décrivez une mécanique de gameplay Minecraft Fabric B-01. Tarif de lancement dès 75 €, périmètre et prix convenus par devis.">
+  <link rel="alternate" hreflang="fr" href="https://mrgblizz.github.io/Portfolio/brief-b01.html">
+  <link rel="alternate" hreflang="en" href="https://mrgblizz.github.io/Portfolio/en/brief-b01.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -40,6 +43,10 @@
     }
     .brand strong { display: block; font: 700 16px 'Silkscreen', monospace; }
     .brand small { color: var(--amber); font: 11px 'JetBrains Mono', monospace; }
+    .header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .language-switch { display: inline-flex; gap: 6px; align-items: center; font: 700 12px 'JetBrains Mono', monospace; white-space: nowrap; }
+    .language-switch a { color: var(--muted); text-decoration: none; }
+    .language-switch a:hover, .language-switch a:focus-visible, .language-switch a[aria-current="page"] { color: var(--amber); text-decoration: underline; text-underline-offset: 4px; }
     main { padding: 52px 0 72px; }
     .kicker { color: var(--orange); font: 12px 'Silkscreen', monospace; }
     h1 { margin: 12px 0 18px; font-size: clamp(24px, 4vw, 38px); line-height: 1.25; }
@@ -77,11 +84,12 @@
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container header-row">
       <a class="brand" href="index.html" aria-label="Retour au portfolio M. CadIIE">
         <span class="brand-cube">MC</span>
         <span><strong>M. CadIIE</strong><small>Fabric / Java Systems</small></span>
       </a>
+      <nav class="language-switch" aria-label="Langue"><a href="brief-b01.html" lang="fr" aria-current="page">FR</a><span aria-hidden="true">|</span><a href="en/brief-b01.html" lang="en">EN</a></nav>
     </div>
   </header>
   <main class="container">

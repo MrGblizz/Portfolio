@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M. CadIIE — Développeur Fabric & Gameplay Systems</title>
+  <title>M. CadIIE — Développeur Minecraft Fabric et systèmes de gameplay</title>
+  <meta name="description" content="Développement Minecraft Fabric sur mesure : diagnostic technique ciblé dès 35 € et mécanique de gameplay dès 75 €. Projet personnel aura_mod et demandes de devis.">
+  <link rel="alternate" hreflang="fr" href="https://mrgblizz.github.io/Portfolio/index.html">
+  <link rel="alternate" hreflang="en" href="https://mrgblizz.github.io/Portfolio/en/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://mrgblizz.github.io/Portfolio/index.html">
 
   <!-- Polices : Silkscreen pour les accents Minecraft/Pixel + Inter/Mono pour le texte lisible -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +81,16 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
+    }
+
+    .nav-end { display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+    .language-switch { display: inline-flex; gap: 6px; align-items: center; font: 700 12px var(--font-mono); white-space: nowrap; }
+    .language-switch a { color: var(--text-muted); text-decoration: none; }
+    .language-switch a:hover, .language-switch a:focus-visible, .language-switch a[aria-current="page"] { color: var(--amber); text-decoration: underline; text-underline-offset: 4px; }
+    @media (max-width: 600px) {
+      .nav-row { flex-wrap: wrap; }
+      .nav-end { width: 100%; justify-content: space-between; }
+      .status-pill { font-size: 9px; }
     }
 
     .brand {
@@ -787,9 +801,14 @@
         </div>
       </a>
 
-      <div class="status-pill">
-        <span class="status-light"></span>
-        <span>DISPONIBLE POUR MISSIONS</span>
+      <div class="nav-end">
+        <div class="status-pill">
+          <span class="status-light"></span>
+          <span>DISPONIBLE POUR MISSIONS</span>
+        </div>
+        <nav class="language-switch" aria-label="Langue">
+          <a href="index.html" lang="fr" aria-current="page">FR</a><span aria-hidden="true">|</span><a href="en/index.html" lang="en" data-language-link>EN</a>
+        </nav>
       </div>
     </div>
   </header>
@@ -1079,6 +1098,14 @@
   <div id="toast" class="toast" role="status" aria-live="polite">DISCORD COPIÉ : mcadiie</div>
 
   <script>
+    const languageLink = document.querySelector('[data-language-link]');
+    languageLink.addEventListener('click', event => {
+      if (['#demo', '#offres', '#contact'].includes(location.hash)) {
+        event.preventDefault();
+        location.href = languageLink.href + location.hash;
+      }
+    });
+
     function toggleSpecialty(id) {
       const panel = document.getElementById('specialty-' + id);
       const button = document.querySelector('.specialty-button[aria-controls="specialty-' + id + '"]');
